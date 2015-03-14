@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- BOARD_VOLUME_CALIBRATION -->
+<MarvellSWVolCalibrationConfig>
+    <Version>1.0</Version>
+    <PlaybackVolumeConfig>
+        <Step>0.5</Step> <!--optional: Step-->
+        <Stream identifier="AUDIO_STREAM_VOICE_CALL"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_EXT_VOIP_WB"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_EXT_VOIP_NB"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_EXT_VT_WB"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_EXT_VT_NB"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+
+        <Stream identifier="AUDIO_STREAM_SYSTEM">
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_RING">
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <CombinedDevices>
+                <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+                <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+            </CombinedDevices>
+            <CombinedDevices>
+                <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+                <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+            </CombinedDevices>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_MUSIC">
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+                <Format identifier=".rmvb">
+                </Format>
+                <Format identifier=".pcm">
+                </Format>
+                <Format identifier=".amr_nb">
+                </Format>
+                <Format identifier=".tone">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+                <Format identifier=".rmvb">
+                </Format>
+                <Format identifier=".pcm">
+                </Format>
+                <Format identifier=".amr_nb">
+                </Format>
+                <Format identifier=".tone">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+                <Format identifier=".rmvb">
+                </Format>
+                <Format identifier=".pcm">
+                </Format>
+                <Format identifier=".amr_nb">
+                </Format>
+                <Format identifier=".tone">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+                <Format identifier=".rmvb">
+                </Format>
+                <Format identifier=".pcm">
+                </Format>
+                <Format identifier=".amr_nb">
+                </Format>
+                <Format identifier=".tone">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_HEADPHONES">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+                <Format identifier=".rmvb">
+                </Format>
+                <Format identifier=".pcm">
+                </Format>
+                <Format identifier=".amr_nb">
+                </Format>
+                <Format identifier=".tone">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+                <Format identifier=".rmvb">
+                </Format>
+                <Format identifier=".pcm">
+                </Format>
+                <Format identifier=".amr_nb">
+                </Format>
+                <Format identifier=".tone">
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_ALARM">
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <CombinedDevices>
+                <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+                <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+            </CombinedDevices>
+            <CombinedDevices>
+                <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+                <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+            </CombinedDevices>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_NOTIFICATION">
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <CombinedDevices>
+                <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+                <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+            </CombinedDevices>
+            <CombinedDevices>
+                <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+                <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                    <Format identifier=".DEFAULT"> <!--default format-->
+                    </Format>
+                    <Format identifier=".mp3">
+                    </Format>
+                    <Format identifier=".aac">
+                    </Format>
+                    <Format identifier=".ogg">
+                    </Format>
+                    <Format identifier=".mid">
+                    </Format>
+                    <Format identifier=".amr">
+                    </Format>
+                    <Format identifier=".wav">
+                    </Format>
+                </Device>
+            </CombinedDevices>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_BLUETOOTH_SCO"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_ENFORCED_AUDIBLE"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+                <Format identifier=".mp3">
+                </Format>
+                <Format identifier=".aac">
+                </Format>
+                <Format identifier=".ogg">
+                </Format>
+                <Format identifier=".mid">
+                </Format>
+                <Format identifier=".amr">
+                </Format>
+                <Format identifier=".wav">
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_DTMF"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_TTS"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_FM"> <!--optional: range-->
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_VOICERECORDING">
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+        <Stream identifier="AUDIO_STREAM_VIDEORECORDING">
+            <Device identifier="AUDIO_DEVICE_OUT_EARPIECE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_SPEAKER">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADSET">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_OUT_WIRED_HEADPHONE">
+                <Format identifier=".DEFAULT"> <!--default format-->
+                </Format>
+            </Device>
+        </Stream>
+    </PlaybackVolumeConfig>
+    <RecordVolumeConfig>
+        <AppStyle identifier="AUDIO_APP_DEFAULT">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_VOICE_RECORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_CAMCORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_ASR">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_VOIP_RECORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_VOIP_WB_RECORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_VOIP_NB_RECORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_VT_RECORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_VT_WB_RECORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+        <AppStyle identifier="AUDIO_APP_VT_NB_RECORDER">
+            <Device identifier="AUDIO_DEVICE_IN_BUILTIN_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_BACK_MIC">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_WIRED_HEADSET">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+            <Device identifier="AUDIO_DEVICE_IN_FMRADIO">
+                <Encoder identifier="AUDIO_ENCODER_DEFAULT"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_NB"/>
+                <Encoder identifier="AUDIO_ENCODER_AMR_WB"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC"/>
+                <Encoder identifier="AUDIO_ENCODER_AAC_PLUS"/>
+                <Encoder identifier="AUDIO_ENCODER_EAAC_PLUS"/>
+            </Device>
+        </AppStyle>
+    </RecordVolumeConfig>
+</MarvellSWVolCalibrationConfig>
+
+
+

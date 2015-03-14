@@ -1,0 +1,1038 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MarvellAudioBasicElements>
+  <Version>1.2</Version>
+  <AudioComponents>
+    <AudioComponent>ELBA</AudioComponent>
+    <AudioComponent>USTICA</AudioComponent>
+    <AudioComponent>CLASSD_AMP</AudioComponent>
+    <AudioComponent>BT</AudioComponent>
+    <AudioComponent>FM</AudioComponent>
+    <AudioComponent>GPIO_PORT</AudioComponent>
+    <AudioComponent>DELAY</AudioComponent>
+    <AudioComponent>MODEM</AudioComponent>
+    <AudioComponent>SW</AudioComponent>
+    <AudioComponent>CODEC</AudioComponent>
+    <AudioComponent>PMIC</AudioComponent>
+  </AudioComponents>
+  <ControlProtocols>
+    <Protocol>I2C</Protocol>
+    <Protocol>HCI</Protocol>
+    <Protocol>GPIO</Protocol>
+    <Protocol>ACIPC</Protocol>
+    <Protocol>SLEEP</Protocol>
+  </ControlProtocols>
+  <Operations>
+    <Operation>ENABLE</Operation>
+    <Operation>DISABLE</Operation>
+    <Operation>MUTE</Operation>
+    <Operation>SETVOLUME</Operation>
+    <Operation>SWITCH</Operation>
+  </Operations>
+  <Component identifier="ELBA">
+    <RegisterInfo index="0x00" name="Main Audio Registers">
+      <Bits range="7:5" field="GEN_ID" default="000" desc="Generation ID" />
+      <Bits range="4:0" field="MI_ID" default="00011" desc="Incremental Identification Number of IC Stepping" />
+    </RegisterInfo>
+    <RegisterInfo index="0x01" name="Main Power-up Register">
+      <Bits range="7:4" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="3" field="AUTO_CAL_DIS" default="00" desc="0=..., 1=..." />
+      <Bits range="2" field="AUTO_SEQ_PU_DIS" default="00" desc="0=..., 1=..." />
+      <Bits range="1" field="I2C_V18EN" default="00" desc="0=..., 1=..." />
+      <Bits range="0" field="STBY_B" default="00" desc="0=..., 1=..." />
+    </RegisterInfo>
+    <RegisterInfo index="0x02" name="Interrupt Management">
+      <Bits range="7:3" field="RSVD" default="00000" desc="Reserved" />
+      <Bits range="2" field="INT_MASKMODE" default="0" desc="Interrupt mask mode" />
+      <Bits range="1" field="INT_INV" default="0" desc="Interrupt signal polarity" />
+      <Bits range="0" field="INT_CLEARMODE" default="0" desc="Interrupt clear mode" />
+    </RegisterInfo>
+    <RegisterInfo index="0x03" name="Interrupt Register 1">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="LDO_OFF" default="0" desc="High Voltage Charge Pump, Low Voltage Charge Pump or Dig LDO is not ready any more" />
+      <Bits range="4" field="SRC_DPLL_LOCK" default="0" desc="SRC1 or SRC2 DPLL is unlocked" />
+      <Bits range="3" field="CLIP_FAULT" default="0" desc="Some clipping stages inside the digital part (SRC or DWS or OVS or MIXEQ) is clipping the signal" />
+      <Bits range="2" field="MIC_CONFLICT" default="0" desc="Downsampler channel selection creates a conflict on shared pin usage (required to be as analog and digital microphone interface at the same time)" />
+      <Bits range="1" field="HP2_SHRT" default="0" desc="Headphone 2 amplifier short interrupt (cleared on write 1)" />
+      <Bits range="0" field="HP1_SHRT" default="0" desc="Headphone 1 amplifier short interrupt (cleared on write 1)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x04" name="Interrupt Register 2">
+      <Bits range="7:6" field="RSVD" default="00" desc="reserved" />
+      <Bits range="5" field="FINE_PLL_FAULT INT" default="0" desc="PLL fine lock is low" />
+      <Bits range="4" field="RAW_PLL_FAULT" default="0" desc="PLL rough lock is low" />
+      <Bits range="3" field="VOLP_BTN_DET INT" default="0" desc="VOL+ button detection interrupt (cleared on write 1)" />
+      <Bits range="2" field="VOLM_BTN_DET INT" default="0" desc="VOL- button detection interrupt (cleared on write 1)" />
+      <Bits range="1" field="SHRT_BTN_DET INT" default="0" desc="Short button detection interrupt (cleared on write 1)" />
+      <Bits range="0" field="MIC_DET INT" default="0" desc="Mic-in detection interrupt (cleared on write 1)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x04" name="Interrupt Register 2">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="FINE_PLL_FAULT" default="0" desc="PLL fine lock is low 32KREG" />
+      <Bits range="4" field="RAW_PLL_FAULT" default="0" desc="PLL rough lock is low 32KREG" />
+      <Bits range="3" field="VOLP_BTN_DET" default="0" desc="VOL+ button detection interrupt (cleared on write 1) 32KREG" />
+      <Bits range="2" field="VOLM_BTN_DET" default="0" desc="VOL- button detection interrupt (cleared on write 1) 32KREG" />
+      <Bits range="1" field="SHRT_BTN_DET" default="0" desc="Short button detection interrupt (cleared on write 1) 32KREG" />
+      <Bits range="0" field="MIC_DET" default="0" desc="Mic-in detection interrupt (cleared on write 1) 32KREG" />
+    </RegisterInfo>
+    <RegisterInfo index="0x05" name="Interrupt Mask Register 1">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="LDO_OFF_MASK" default="0" desc="LDO not ready interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="4" field="SRC_DPLL_LOCK_MASK" default="0" desc="SRC DPLL unlock interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="3" field="CLIP_FAULT_MASK" default="0" desc="Clip interrupt 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="2" field="MIC_CONFLICT_MASK" default="0" desc="Mic pad conflict interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="1" field="HP2_SHRT_MASK" default="0" desc="Headphone 2 amplifier short interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="0" field="HP1_SHRT_MASK" default="0" desc="Headphone 1 amplifier short interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+    </RegisterInfo>
+    <RegisterInfo index="0x06" name="Interrupt Mask Register 2">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="FINE_PLL_FAULT_MASK" default="0" desc="PLL fine unlock interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="4" field="RAW_PLL_FAULT_MASK" default="0" desc="PLL rough unlock interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="3" field="VOLP_BTN_DET_MASK" default="0" desc="VOL+ button detection interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="2" field="VOLM_BTN_DET_MASK" default="0" desc="VOL- button detection interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="1" field="SHRT_BTN_DET_MASK" default="0" desc="Short button detection interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+      <Bits range="0" field="MIC_DET_MASK" default="0" desc="Mic-in detection interrupt mask 0 = INTLINE is not affected 1 = INTLINE is affected 32KREG" />
+    </RegisterInfo>
+    <RegisterInfo index="0x7" name="Microphone Detection Register 1">
+      <Bits range="7:6" field="MDET_VOLP_THOLD[1:0]" default="00" desc="VOL+ button detect comparator programmable threshold 0 = 225mV threshold 1 = 250mV threshold 10 = 300mV threshold 11 = 350mV threshold I2C_SCL" />
+      <Bits range="5:4" field="MDET_SHORT_THOLD[1:0]" default="00" desc="Short button detect comparator programmable threshold: 0 = 100mV threshold 1 = 125mV threshold 10 = 150mV threshold 11 = 200mV threshold I2C_SCL" />
+      <Bits range="3" field="MDET_VOLM_THOLD" default="0" desc="VOL- button detect comparator programmable threshold: 0 = 550mV threshold 1 = 650mV threshold I2C_SCL" />
+      <Bits range="2:1" field="MDET_MBIAS_TIM" default="00" desc="0 Time to wait for micbias to be on (for auto mic detection) 0 = 5mSec 1 = 10mSec 10 = 15mSec 11 = 20mSec I2C_SCL" />
+      <Bits range="0" field="MICDET_EN" default="0" desc="Auto mic-in detection enable 0 = Detection is disabled 1 = Detection is enabled I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x8" name="Microphone Detection Register 2">
+      <Bits range="7:6" field="MDET_BTN_DBNC[1:0]" default="00" desc="Debounce time for auto button detection 0 = 100mSec 1 = 48mSec 10 = 24mSec 11 = no debounce I2C_SCL" />
+      <Bits range="5:4" field="MDET_BTN_TIM[1:0]" default="00" desc="Polling time for auto button detection 0 = mic_time / 2 1 = mic_time / 4 10 = mic_time / 8 11 = mic_time / 16 I2C_SCL" />
+      <Bits range="3:2" field="MDET_MIC_DBNC[1:0]" default="00" desc="Debounce time for auto mic detection 0 = 100mSec 1 = 48mSec 10 = 24mSec 11 = no debounce I2C_SCL" />
+      <Bits range="1:0" field="MDET_MIC_TIM[1:0]" default="00" desc="Polling time for auto mic detection 0 = 1Sec 1 = 500mSec 10 = 250mSec 11 = continuous I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x09" name="Microphone Detection Status">
+      <Bits range="7:4" field="RSVD" default="0000" desc="Reserved" />
+      <Bits range="3" field="VOLP_BTN_DET_FILT" default="0" desc="Auto VOL+ button detection result 0 = Button not detected 1 = Button detected I2C_SCL" />
+      <Bits range="2" field="VOLM_BTN_DET_FILT" default="0" desc="Auto VOL- button detection result 0 = Button not detected 1 = Button detected I2C_SCL" />
+      <Bits range="1" field="SHRT_BTN_DET_FILT" default="0" desc="Auto short button detection result 0 = Button not detected 1 = Button detected I2C_SCL" />
+      <Bits range="0" field="MIC_DET_FILT" default="0" desc="Auto mic-in detection result 0 = Microphone not detected 1 = Microphone detected I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x0A" name="Microphone Detection Register 3">
+      <Bits range="7:3" field="RSVD" default="00000" desc="Reserved" />
+      <Bits range="2" field="HP_SHRT_AR_FORCE_SIG_EN" default="0" desc="HP short autorecovery machine configuration 0 = normal audio play on HP during autorecovery attempts (default) 1 = forced DC signal on HP during autorecovery attempts" />
+      <Bits range="1" field="HP_SHRT_AR_DIS" default="0" desc="HP short autorecovery machine disable 0 = Enabled 1 = Disabled" />
+      <Bits range="0" field="MDET_MIC_THOLD" default="0" desc="Mic detect comparator programmable threshold: 0 = 1500mV threshold 1 = 1550mV threshold I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x0B" name="Automatic Sequence Status Register 1">
+      <Bits range="7" field="SEQ_HP2_IDLE" default="1" desc="High when HP2 sequencer is in idle mode I2C_SCL" />
+      <Bits range="6" field="SEQ_HP2_READY" default="0" desc="High when HP2 sequencer is in ready mode I2C_SCL" />
+      <Bits range="5" field="SEQ_HP1_IDLE" default="1" desc="High when HP1 sequencer is in idle mode I2C_SCL" />
+      <Bits range="4" field="SEQ_HP1_READY" default="0" desc="High when HP1 sequencer is in ready mode I2C_SCL" />
+      <Bits range="3" field="SEQ_EP_IDLE" default="1" desc="High when EP sequencer is in idle mode I2C_SCL" />
+      <Bits range="2" field="SEQ_EP_READY" default="0" desc="High when EP sequencer is in ready mode I2C_SCL" />
+      <Bits range="1" field="SEQ_PU_IDLE" default="1" desc="High when power up sequencer is in idle mode I2C_SCL" />
+      <Bits range="0" field="SEQ_PU_READY" default="0" desc="High when power up sequencer is in ready mode I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x0C" name="Automatic Sequence Status Register 2">
+      <Bits range="7:3" field="RSVD" default="00000" desc="Reserved" />
+      <Bits range="2" field="HVCP_READY" default="0" desc="High when High Voltage charge pump is ready I2C_SCL" />
+      <Bits range="1" field="LVCP_READY" default="0" desc="High when Low Voltage charge pump is ready I2C_SCL" />
+      <Bits range="0" field="FC_READY" default="0" desc="High when reconstruction filter fast charge is done I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x10" name="ADCs Settings Register 1">
+      <Bits range="7:5" field="RSVD" default="000" desc="Reserved" />
+      <Bits range="4:3" field="ADC_VREFSEL" default="10" desc="ADCs VREF level control" />
+      <Bits range="2" field="ADC_CHOPEN"    default="1" desc="ADCs chopper enable" />
+      <Bits range="1" field="AUX2_TO_ADC2"  default="0" desc="ADC2 input selector path 0:microphone 1:auxilary" />
+      <Bits range="0" field="AUX1_TO_ADC1"  default="0" desc="ADC1 input selector path 0:microphone 1:auxilary" />
+    </RegisterInfo>
+    <RegisterInfo index="0x11" name="ADCs Settings Register 2">
+      <Bits range="7:4" field="RSVD" default="0000" desc="Reserved" />
+      <Bits range="3:2" field="MICPGA2_IN_SEL[1:0]" default="00" desc="Input selector for MICPGA2 0 = AMIC2P/AMIC2N microphone 1 = External microphone (AMICPEXT/AMICNEXT) 1X = Mute, input shorted to VMID" />
+      <Bits range="1:0" field="MICPGA1_IN_SEL[1:0]" default="00" desc="Input selector for MICPGA1 0 = AMIC1P/AMIC1N microphone 1 = External microphone (AMICPEXT/AMICNEXT) 1X = Mute, input shorted to VMID" />
+    </RegisterInfo>
+    <RegisterInfo index="0x15" name="DMIC Settings">
+      <Bits range="7" field="DMIC12_R_B4_L" default="0" desc="Selectors of expected DMIC12 stereo data bit stream mixing order 0 = Left is expected on rising edge of MICCLK12 and right on falling 1 = Left" />
+      <Bits range="6:4" field="DMIC12_FREQ_SEL[2:0]" default="000" desc="DMIC12 expected frequency selector 0 = 6.144 MHz 1 = 4.096 MHz 10 = 3.072 MHz 11 = 2.048 MHz 100 = 1.536 MHz 101 = 1.024" />
+      <Bits range="3" field="DMIC34_R_B4_L" default="000" desc="Selectors of expected DMIC34 stereo data bit stream mixing order 0 = Left is expected on rising edge of MICCLK34 and right on falling 1 = Left" />
+      <Bits range="2:0" field="DMIC34_FREQ_SEL[2:0]" default="000" desc="DMIC34 expected frequency selector 0 = 6.144 MHz 1 = 4.096 MHz 10 = 3.072 MHz 11 = 2.048 MHz 100 = 1.536 MHz 101 = 1.024" />
+    </RegisterInfo>
+    <RegisterInfo index="0x16" name="Downsampler (DWS) Settings">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="EXTMIC_BIAS" default="0" desc="AMICBEXT pad functionality 0 = GND 1 = 1.65V (for mic bias)" />
+      <Bits range="5:3" field="DWS2_IN_SEL[2:0]" default="000" desc="Input selector for downsampling 2 0 = DWS2-MUTE 1 = DWS2-ADC1 10 = DWS2-ADC2 11 = DWS2-MUTE 100 = DWS2-DMIC12L 101 = DWS2-DMIC12R 110 = DWS2-DMIC34L 111" />
+      <Bits range="2:0" field="DWS1_IN_SEL[2:0]" default="0" desc="Input selector for downsampling 1 0 = DWS1-MUTE 1 = DWS1-ADC1 10 = DWS1-ADC2 11 = DWS1-MUTE 100 = DWS1-DMIC12L 101 = DWS1-DMIC12R 110 = DWS1-DMIC34L 111" />
+    </RegisterInfo>
+    <RegisterInfo index="0x17" name="Microphone Conflict Status">
+      <Bits range="7:2" field="RSVD" default="000000" desc="Reserved" />
+      <Bits range="1" field="MICDIG34_CONFLICT" default="0" desc="DMIC34 / AMIC2 Conflict: returns 1 when trying to select for downsampling both DMIC34 and AMIC2 which share the same pins. In this case related pins are" />
+      <Bits range="0" field="MICDIG12_CONFLICT" default="0" desc="DMIC12 / AMIC1 Conflict: returns 1 when trying to select for downsampling both DMIC12 and AMIC1 which share the same pins. In this case related pins are" />
+    </RegisterInfo>
+    <RegisterInfo index="0x20" name="PDM Settings Register 1">
+      <Bits range="7:6" field="PDM_PAD_MODE[1:0]" default="00" desc="Selector for PDMCLK and PDMDAT status and for PDMCLK activity 0 = Pad in HiZ weak pull-down 1 = Pad in HiZ 10 = Pad driving with" />
+      <Bits range="5:4" field="PDM2_DIS_MODE[1:0]" default="00" desc="PDM2 data disable mode (only when PDM2_EN 0) 0 = PDM2 data in HiZ 1 = PDM2 data toggling 10 = PDM2 data all zeros 11 =" />
+      <Bits range="3" field="PDM2_EN" default="0" desc="PDM2 data enable: 0 = Disabled 1 = Enabled" />
+      <Bits range="2:1" field="PDM1_DIS_MODE[1:0]" default="00" desc="PDM1 data disable mode (only when PDM1_EN 0) 0 = PDM1 data in HiZ 1 = PDM1 data toggling 10 = PDM1 data all zeros 11 =" />
+      <Bits range="0" field="PDM1_EN" default="0" desc="PDM1 data enable: 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x21" name="PDM Settings Register 2">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="PDM_RB4L" default="0" desc="Selectors of PDM stereo data bit stream mixing order 0 = Left is outputted on rising edge of PDMCLK and right on falling 1 = Left is" />
+      <Bits range="5:3" field="PDMCLK_DLY_SEL[2:0]" default="000" desc="PDM clock buffer programmable delay (typical corner) 0 = 0 nSec 1 = 0.5 nSec 10 = 1 nSec 11 = 1.5 nSec 100 = 2 nSec" />
+      <Bits range="2:0" field="PDM_MODE_SEL[2:0]" default="000" desc="PDM order and output bit stream frequency selector 0 = 6.144 MHz, 3rd order 1 = 6.144 MHz, 4th order 10 = 6.144 MHz, 5th order 11" />
+    </RegisterInfo>
+    <RegisterInfo index="0x22" name="PDM Settings Register 3">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5:3" field="PDMDAT_HIZ_DLY_SEL[2:0]" default="000" desc="PDM data buffer programmable delay (typical corner) 0 = 0 nSec 1 = 0.5 nSec 10 = 1 nSec 11 = 1.5 nSec 100 = 2 nSec" />
+      <Bits range="2:0" field="PDMDAT_DLY_SEL[2:0]" default="000" desc="PDM data HiZ command programmable delay (typical corner) 0 = 0 nSec 1 = 0.5 nSec 10 = 1 nSec 11 = 1.5 nSec 100 = 2" />
+    </RegisterInfo>
+    <RegisterInfo index="0x23" name="PDM Control Register 1">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="PDM_CTRL_GO" default="0" desc="PDM control silence pattern activation. This bit must be set to 1 before sending control pattern, then it stays high during pattern repetitions. It is automatically reset" />
+      <Bits range="5:3" field="PDM_CTRL_REP[2:0]" default="000" desc="PDM control pattern repetition number 0 = 32 times 1 = 64 times 10 = 96 times 11 = 128 times 100 = 160 times 101 =" />
+      <Bits range="2" field="PDM_CTRL_16BIT_EN" default="0" desc="Selects the number of bit for control patterns representation 0 = 8-bit control patterns are selected. Each repetition will include 8-bit stream issuing 1 = 16-bit control" />
+      <Bits range="1" field="PDM_CTRL_DIS1" default="0" desc="Control pattern flow enabled through PDM1: 0 = Enabled 1 = Disabled" />
+      <Bits range="0" field="PDM_CTRL_DIS2" default="0" desc="Control pattern flow enabled through PDM2: 0 = Enabled 1 = Disabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x24" name="PDM Control Register 2">
+      <Bits range="7:0" field="PDM_CTRL_PATT_MSB[7:0]" default="00000000" desc="Value of MSB bits of control pattern. This register is effective only when 16-bit control patterns are selected. Otherwise LSB only are issued." />
+    </RegisterInfo>
+    <RegisterInfo index="0x25" name="PDM Control Register 3">
+      <Bits range="7:0" field="PDM_CTRL_PATT_LSB[7:0]" default="00000000" type="Gain" desc="Value of LSB bits of control pattern. When 8-bit control patterns are selected, only this register is issued.">
+        <Capbility value="0xD4" decibel="-3" />
+        <Capbility value="0xAA" decibel="0" />
+        <Capbility value="0xD8" decibel="3" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x26" name="Headphone Settings">
+      <Bits range="7" field="HP2_HIZ" default="0" desc="Headphone 2 amplifier tristate command (automatically set in case of short detection) 0 = Active output 1 = HiZ output" />
+      <Bits range="6" field="HP1_HIZ" default="0" desc="Headphone 1 amplifier tristate command (automatically set in case of short detection) 0 = Active output 1 = HiZ output" />
+      <Bits range="5:4" field="HP2_IN_SEL[1:0]" default="00" desc="Input selector for headphone 2 DAC 0 = MUTE 1 = SDM1 channel 10 = SDM2 channel 11 = AUXPGA2 (analog-to-analog path)" />
+      <Bits range="3" field="HP2_EN" default="0" desc="Enable for headphone2 output path 0 = Disabled 1 = Enabled" />
+      <Bits range="2:1" field="HP1_IN_SEL[1:0]" default="00" desc="Input selector for headphone 1 DAC 0 = MUTE 1 = SDM1 channel 10 = SDM2 channel 11 = AUXPGA1 (analog-to-analog path)" />
+      <Bits range="0" field="HP1_EN" default="0" desc="Enable for headphone1 output path 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x28" name="Headphone Short State">
+      <Bits range="7:2" field="RSVD" default="1" desc="Reserved HP2_SHRT_STATE COW0 0 Headphone 2 amplifier short detection 0 = No short detected 1 = Short detected" />
+      <Bits range="0" field="HP1_SHRT_STATE" default="0" desc="Headphone 1 amplifier short detection 0 = No short detected 1 = Short detected" />
+    </RegisterInfo>
+    <RegisterInfo index="0x2A" name="Automatic Sequencer Settings">
+      <Bits range="7:3" field="RSVD" default="00000" desc="Reserved" />
+      <Bits range="2" field="AUTO_SEQ_HP2_DIS" default="0" desc="Disable for automatic headphone 2 power up/down procedure 0 = Automatic procedure enabled 1 = Automatic procedure disabled" />
+      <Bits range="1" field="AUTO_SEQ_HP1_DIS" default="0" desc="Disable for automatic headphone 1 power up/down procedure 0 = Automatic procedure enabled 1 = Automatic procedure disabled" />
+      <Bits range="0" field="AUTO_SEQ_EP_DIS" default="0" desc="Disable for automatic earpiece power up/down procedure 0 = Automatic procedure enabled 1 = Automatic procedure disabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x30" name="Serial Audio Interface 1 (SAI1) Settings Register 1">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="SAI1_R_ALIGN" default="0" desc="SAI1 alignment mode respect to FSYN relevant edge 0 = Serial data communication is left aligned 1 = Serial data communication is right aligned" />
+      <Bits range="4:3" field="SAI1_WLEN[1:0]" default="00" desc="SAI1 word length 0 = 8 bit 1 = 16 bit 10 = 20 bit 11 = 24 bit" />
+      <Bits range="2" field="SAI1_DELAY_MODE" default="0" desc="SAI1 delayed mode setting 0 = Serial data is valid starting from the first bit of the communication 1 = Serial data is valid with one bitclk" />
+      <Bits range="1" field="SAI1_I2S_MODE" default="0" desc="SAI1 I2S mode setting 0 = Serial data communication is influenced only by rising edge of FSYN signal 1 = Serial data communication is influenced by both" />
+      <Bits range="0" field="SAI1_MASTER" default="0" desc="SAI1 master/slave mode 0 = Slave 1 = Master" />
+    </RegisterInfo>
+    <RegisterInfo index="0x31" name="Serial Audio Interface 1 (SAI1) Settings Register 2">
+      <Bits range="7" field="SAI1_SINGLE_FSYN" default="0" desc="SAI1 FSYN signal duration (only for master mode) 0 = 50% duty cycle FSYN 1 = Single bclk pulse FSYN" />
+      <Bits range="6:3" field="SAI1_FSYN_RATE[3:0]" default="0000" desc="SAI1 FSYN rate (only for master mode) 0 = 8 kHz 1 = 11.025 kHz 001X = 12 kHz 100 = 16 kHz 101 = 22.05 kHz" />
+      <Bits range="2:0" field="SAI1_BCLK_OSR[2:0]" default="000" desc="SAI1 BCLK rate respect to FSYN rate (only for master mode) 0 = 16fs 1 = 32fs 10 = 36fs 11 = 40fs 100 = 48fs 101" />
+    </RegisterInfo>
+    <RegisterInfo index="0x32" name="Serial Audio Interface 1 (SAI1) Settings Register 3">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="SAI1_PD_ON_CH0" default="0" desc="It selects the channel after which transfer the clock domain resynch of parallel data (both in input and output usage of SAI1) can be safely managed 0" />
+      <Bits range="4" field="SDO1_HIZ_DIS" default="0" desc="SAI1 SDO high impedance disable 0 = Serial data output goes in Hi-Z state in case of no data 1 = Serial data output is 0 in" />
+      <Bits range="3" field="SAI1_FSYN_VAL[1]" default="0" desc="SAI1 channel 1 mapping (only for I2S mode) 0 = Channel 1 transmitted on FSYN low state 1 = Channel 1 transmitted on FSYN high state" />
+      <Bits range="2" field="SAI1_FSYN_VAL[0]" default="0" desc="SAI1 channel 0 mapping (only for I2S mode) 0 = Channel 0 transmitted on FSYN low state 1 = Channel 0 transmitted on FSYN high state" />
+      <Bits range="1" field="SAI1_BCLK_INV" default="0" desc="SAI1 BCLK polarity 0 = FSYN and serial data are toggling on BCLK falling edge and strobed on BCLK rising edge 1 = FSYN and serial data" />
+      <Bits range="0" field="SAI1_FSYN_INV" default="0" desc="SAI1 FSYN polarity 0 = Normal polarity 1 = Inverted polarity" />
+    </RegisterInfo>
+    <RegisterInfo index="0x33" name="Serial Audio Interface 1 (SAI1) Settings Register 4">
+      <Bits range="7:0" field="SAI1CH0_OFFS[7:0]" default="00000000" desc="SAI1 channel 0 offset. 8 bit word indicating starting (or ending, in case of right aligned mode) valid bit in serial communication for relevant channel" />
+    </RegisterInfo>
+    <RegisterInfo index="0x34" name="Serial Audio Interface 1 (SAI1) Settings Register 5">
+      <Bits range="7:0" field="SAI1CH1_OFFS[7:0]" default="00000000" desc="SAI1 channel 1 offset. 8 bit word indicating starting (or ending, in case of right aligned mode) valid bit in serial communication for relevant chan" />
+    </RegisterInfo>
+    <RegisterInfo index="0x35" name="Serial Audio Interface 2 (SAI2) Settings Register 2">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="SAI2_R_ALIGN" default="0" desc="SAI2 alignment mode respect to FSYN relevant edge 0 = Serial data communication is left aligned 1 = Serial data communication is right aligned" />
+      <Bits range="4:3" field="SAI2_WLEN[1:0]" default="00" desc="SAI2 word length 0 = 8 bit 1 = 16 bit 10 = 20 bit 11 = 24 bit" />
+      <Bits range="2" field="SAI2_DELAY_MODE" default="0" desc="SAI2 delayed mode setting 0 = Serial data is valid starting from the first bit of the communication 1 = Serial data is valid with one bitclk" />
+      <Bits range="1" field="SAI2_I2S_MODE" default="0" desc="SAI2 I2S mode setting 0 = Serial data communication is influenced only by rising edge of FSYN signal 1 = Serial data communication is influenced by both" />
+      <Bits range="0" field="SAI2_MASTER" default="0" desc="SAI2 master/slave mode 0 = Slave 1 = Master" />
+    </RegisterInfo>
+    <RegisterInfo index="0x36" name="Serial Audio Interface 2 (SAI2) Settings Register 2">
+      <Bits range="7" field="SAI2_SINGLE_FSYN" default="0" desc="SAI2 FSYN signal duration (only for master mode) 0 = 50% duty cycle FSYN 1 = Single bclk pulse FSYN" />
+      <Bits range="6:3" field="SAI2_FSYN_RATE[3:0]" default="0000" desc="SAI2 FSYN rate (only for master mode) 0 = 8 kHz 1 = 11.025 kHz 001X = 12 kHz 100 = 16 kHz 101 = 22.05 kHz" />
+      <Bits range="2:0" field="SAI2_BCLK_OSR[2:0]" default="000" desc="SAI2 BCLK rate respect to FSYN rate (only for master mode) 0 = 16fs 1 = 32fs 10 = 36fs 11 = 40fs 100 = 48fs 101" />
+    </RegisterInfo>
+    <RegisterInfo index="0x37" name="Serial Audio Interface 2 (SAI2) Settings Register 3">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="SAI2_PD_ON_CH0" default="0" desc="It selects the channel after which transfer the clock domain resynch of parallel data (both in input and output usage of SAI1) can be safely managed 0" />
+      <Bits range="4" field="SDO2_HIZ_DIS" default="0" desc="SAI2 SDO high impedance disable 0 = Serial data output goes in Hi-Z state in case of no data 1 = Serial data output is 0 in" />
+      <Bits range="3" field="SAI2_FSYN_VAL[1]" default="0" desc="SAI2 channel 1 mapping (only for I2S mode) 0 = Channel 1 transmitted on FSYN low state 1 = Channel 1 transmitted on FSYN high state" />
+      <Bits range="2" field="SAI2_FSYN_VAL[0]" default="0" desc="SAI2 channel 0 mapping (only for I2S mode) 0 = Channel 0 transmitted on FSYN low state 1 = Channel 0 transmitted on FSYN high state" />
+      <Bits range="1" field="SAI2_BCLK_INV" default="0" desc="SAI2 BCLK polarity 0 = FSYN and serial data are toggling on BCLK falling edge and strobed on BCLK rising edge 1 = FSYN and serial data" />
+      <Bits range="0" field="SAI2_FSYN_INV" default="0" desc="SAI2 FSYN polarity 0 = Normal polarity 1 = Inverted polarity" />
+    </RegisterInfo>
+    <RegisterInfo index="0x38" name="Serial Audio Interface 2 (SAI1) Settings Register 4">
+      <Bits range="7:0" field="SAI2CH0_OFFS[7:0]" default="00000000" desc="SAI2 channel 0 offset. 8 bit word indicating starting (or ending, in case of right aligned mode) valid bit in serial communication for relevant channel" />
+    </RegisterInfo>
+    <RegisterInfo index="0x39" name="Serial Audio Interface 2 (SAI1) Settings Register 5">
+      <Bits range="7:0" field="SAI2CH1_OFFS[7:0]" default="00000000" desc="SAI2 channel 1 offset. 8 bit word indicating starting (or ending, in case of right aligned mode) valid bit in serial communication for relevant chan" />
+    </RegisterInfo>
+    <RegisterInfo index="0x3A" name="Sample Rate Converter (SRC) DPLL Lock Status">
+      <Bits range="7:4" field="RSVD" default="0000" desc="Reserved" />
+      <Bits range="3" field="SRC1O_DPLL_LOCK" default="0" desc="Output SRC1 synchronous mode digital PLL lock 0 = SRC1out is unlocked 1 = SRC1out is locked" />
+      <Bits range="2" field="SRC2O_DPLL_LOCK" default="0" desc="Output SRC2 synchronous mode digital PLL lock 0 = SRC2out is unlocked 1 = SRC2out is locked" />
+      <Bits range="1" field="SRC1I_DPLL_LOCK" default="0" desc="Input SRC1 synchronous mode digital PLL lock 0 = SRC1in is unlocked 1 = SRC1in is locked" />
+      <Bits range="0" field="SRC2I_DPLL_LOCK" default="0" desc="Input SRC2 synchronous mode digital PLL lock 0 = SRC2in is unlocked 1 = SRC2in is locked" />
+    </RegisterInfo>
+    <RegisterInfo index="0x3B" name="Sample Rate Converter (SRC) Settings Register 1">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="SRC1_SYNC_MODE" default="0" desc="SRC1 synchronous mode enable 0 = SRC is asynchronous mode 1 = SRC is synchronous mode (SAI1 clocks must be synchronous with system clock)" />
+      <Bits range="4" field="SRC2_SYNC_MODE" default="0" desc="SRC2 synchronous mode enable 0 = SRC is asynchronous mode 1 = SRC is synchronous mode (SAI2 clocks must be synchronous with system clock)" />
+      <Bits range="3:2" field="SRC2O_BAND[1:0]" default="00" desc="Output SRC2 signal bandwidth 0 = up to 20kHz 1 = up to 8kHz 1X = up to 4kHz" />
+      <Bits range="1:0" field="SRC1O_BAND[1:0]" default="0" desc="Output SRC1 signal bandwidth 0 = up to 20kHz 1 = up to 8kHz 1X = up to 4kHz" />
+    </RegisterInfo>
+    <RegisterInfo index="0x3C" name="Sample Rate Converter (SRC) Settings Register 2">
+      <Bits range="7:4" field="SRC1O_CH_SEL_1[3:0]" default="0000" desc="SRC1out channel 1 input selector 0000 = DWS ch1" />
+      <Bits range="3:0" field="SRC1O_CH_SEL_2[3:0]" default="0001" desc="SRC1out channel 2 input selector 0001 = DWS ch2" />
+    </RegisterInfo>
+    <RegisterInfo index="0x3D" name="Sample Rate Converter (SRC) Settings Register 3">
+      <Bits range="7:4" field="SRC2O_CH_SEL_1[3:0]" default="0000" desc="SRC2out channel 1 input selector 0000 = DWS ch1 (default)" />
+      <Bits range="3:0" field="SRC2O_CH_SEL_2[3:0]" default="0001" desc="SRC2out channel 2 input selector 0001 = DWS ch2 (default)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x3E" name="Sidetone Settings">
+      <Bits range="7:4" field="RSVD" default="0000" desc="Reserved" />
+      <Bits range="3" field="ST_CH2" default="0" desc="Sidetone enabled on SRC2 input channel 2:0 0 = Disabled 1 = Enabled" />
+      <Bits range="2" field="ST_CH1" default="0" desc="Sidetone enabled on SRC2 input channel 1:0 0 = Disabled 1 = Enabled" />
+      <Bits range="1" field="ST_TX_CHSEL" default="0" desc="Sidetone transmitting channel selector: 0 = SRC2 output 1 1 = SRC2 output 2" />
+      <Bits range="0" field="ST_RX_CHSEL" default="0" desc="Sidetone receiving channel selector: 0 = SRC2 input 1 1 = SRC2 input 2" />
+    </RegisterInfo>
+    <RegisterInfo index="0x3F" name="Sidetone Coefficient Register 1">
+        <Bits range="7:0" field="ST_RX_COEFF_MSB[7:0]" default="0" desc="MSBs of sidetone coefficient on selected receiving channel (unsigned, from 0 to +2)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x40" name="Sidetone Coefficient Register 2">
+      <Bits range="7:0" field="ST_RX_COEFF_LSB[7:0]" default="0"  desc="LSBs of sidetone coefficient on selected receiving channel (unsigned, from 0 to +2)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x41" name="Sidetone Coefficient Register 3">
+      <Bits range="7:0" field="ST_TX_COEFF_MSB[7:0]" default="0" type="Gain" desc="MSBs of sidetone coefficient on selected receiving channel (unsigned, from 0 to +2)">
+       <Capbility value="0x0" decibel="Mute" />
+       <Capbility value="0x3" decibel="-32.6" />
+       <Capbility value="0x4" decibel="-30.1" />
+       <Capbility value="0x5" decibel="-28.1" />
+       <Capbility value="0x6" decibel="-26.6" />
+       <Capbility value="0x7" decibel="-25.2" />
+       <Capbility value="0x8" decibel="-24.0" />
+       <Capbility value="0x9" decibel="-23.1" />
+       <Capbility value="0xA" decibel="-22.1" />
+       <Capbility value="0xB" decibel="-21.3" />
+       <Capbility value="0xD" decibel="-19.8" />
+       <Capbility value="0xE" decibel="-19.2" />
+       <Capbility value="0x10" decibel="-18.0" />
+       <Capbility value="0x12" decibel="-17.0" />
+       <Capbility value="0x14" decibel="-16.1" />
+       <Capbility value="0x17" decibel="-14.9" />
+       <Capbility value="0x19" decibel="-14.1" />
+       <Capbility value="0x1D" decibel="-12.8" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x42" name="Sidetone Coefficient Register 4">
+      <Bits range="7:0" field="ST_TX_COEFF_LSB[7:0]" default="0" desc="LSBs of sidetone coefficient on selected receiving channel (unsigned, from 0 to +2)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x50" name="Digital Block Enable Register 1">
+      <Bits range="7:5" field="RSVD" default="000" desc="Reserved" />
+      <Bits range="4" field="ZCDET_EN" default="0" desc="Enables ZC detection based volume ramp 0 = ZC detection disabled. Volume ramp timing is programmable 1 = ZC detection is enabled. Volume ramp timing is not" />
+      <Bits range="3" field="MIX_EQ_EN" default="0" desc="Programmable mixers/equalizers block enable 0 = Disabled 1 = Enabled" />
+      <Bits range="2" field="PRC_EN" default="0" desc="Processing block enable 0 = Disabled 1 = Enabled" />
+      <Bits range="1" field="DWS_EN" default="0" desc="Downsampler block enable 0 = Disabled 1 = Enabled" />
+      <Bits range="0" field="OVS_EN" default="0" desc="Oversampler block enable 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x51" name="Digital Block Enable Register 2">
+      <Bits range="7:6" field="RSVD" default="00" desc="Reserved" />
+      <Bits range="5" field="SRC2O_EN" default="0" desc="Output sample rate converter 2 block enable 0 = Disabled 1 = Enabled" />
+      <Bits range="4" field="SRC1O_EN" default="0" desc="Output sample rate converter 1 block enable 0 = Disabled 1 = Enabled" />
+      <Bits range="3" field="SRC2I_EN" default="0" desc="Input sample rate converter 2 block enable 0 = Disabled 1 = Enabled" />
+      <Bits range="2" field="SRC1I_EN" default="0" desc="Input sample rate converter 1 block enable 0 = Disabled 1 = Enabled" />
+      <Bits range="1" field="SAI2_EN" default="0" desc="Serial interface 2 enable 0 = Disabled 1 = Enabled" />
+      <Bits range="0" field="SAI1_EN" default="0" desc="Serial interface 1 enable 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x52" name="Volume Channel 1/2 Selection">
+      <Bits range="7:4" field="VOL_CH_SEL_1[3:0]" default="0000" desc="Volume input channel 1 selector towards SDM1 0000 = SRC1i ch1 (default)" />
+      <Bits range="3:0" field="VOL_CH_SEL_2[3:0]" default="0001" desc="Volume input channel 2 selector towards SDM2 0001 = SRC1i ch2 (default)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x53" name="Volume Channel 3/4 Selection">
+      <Bits range="7:4" field="VOL_CH_SEL_3[3:0]" default="0000" desc="Volume input channel 3 selector towards PDM1 0000 = SRC1i ch1 (default)" />
+      <Bits range="3:0" field="VOL_CH_SEL_4[3:0]" default="0001" desc="Volume input channel 4 selector towards PDM2 0001 = SRC1i ch2 (default)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x54" name="Zero-Cross / Automute Parameters">
+      <Bits range="7:6" field="AUTOMUTE_FILT_SDM[1:0]" default="0" desc="Selects the time filter duration for automute to be issued. Signal under threshold condition is deglitched with the selected timing before automute being issued. Automute is released" />
+      <Bits range="5:4" field="AUTOMUTE_FILT_PDM[1:0]" default="0" desc="Selects the time filter duration for automute to be issued. Signal under threshold condition is deglitched with the selected timing before automute being issued. Automute is released" />
+      <Bits range="3:2" field="ZC_THRESH_SDM[1:0]" default="1" desc="Selects the audio signal hysteretic double threshold to be used both for ZC based volume ramp control and for automute feature. This selection applies to volume control" />
+      <Bits range="1:0" field="ZC_THRESH_PDM[1:0]" default="1" desc="Selects the audio signal hysteretic double threshold to be used both for ZC based volume ramp control and for automute feature. This selection applies to volume control" />
+    </RegisterInfo>
+    <RegisterInfo index="0x55" name="Volume Control Parameter Selection">
+      <Bits range="7:4" field="RAMP_TIME_SEL[3:0]" default="0" desc="Volume ramp step time selector (applied when ZC detection is disabled) 0 = volume ramp is disabled (immediate volume word issuing) 1 = 31.25 uSec (4/Fs @Fs=128KHz)" />
+      <Bits range="3:2" field="AUTOMUTE_MODE_SDM[1:0]" default="0" desc="Selects the automute operating mode. This selection applies to volume control units 1 and 2, that are corresponding to SDM 1 and SDM 2 channels 0 =" />
+      <Bits range="1:0" field="AUTOMUTE_MODE_PDM[1:0]" default="0" desc="Selects the automute operating mode. This selection applies to volume control units 3 and 4, that are corresponding to PDM1 and PDM2 channels 0 = Automute OFF" />
+    </RegisterInfo>
+    <RegisterInfo index="0x5A" name="Mixers/Equalizers Coefficient Management Register 1">
+      <Bits range="7:4" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="3" field="EQ1_IN_SEL" default="0" desc="Equalizer channel 1 input selector: 0 = MIX1 ch1 1 = MIX2 ch3" />
+      <Bits range="2" field="EQ2_IN_SEL" default="0" desc="Equalizer channel 2 input selector: 0 = MIX1 ch2 1 = MIX2 ch4" />
+      <Bits range="1" field="EQ3_IN_SEL" default="0" desc="Equalizer channel 3 input selector: 0 = MIX1 ch3 1 = MIX2 ch1" />
+      <Bits range="0" field="EQ4_IN_SEL" default="0" desc="Equalizer channel 4 input selector: 0 = MIX1 ch4 1 = MIX2 ch2" />
+    </RegisterInfo>
+    <RegisterInfo index="0x5B" name="Mixers/Equalizers Coefficient Management Register 2">
+      <Bits range="7:5" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="4:0" field="COEFF_FILT_ADDR[4:0]" default="0" desc="Filter address for precharged coefficients to be transferred or for coefficient readback. When writing a biquadratic cell coefficients, the new values will be effective after the end" />
+    </RegisterInfo>
+    <RegisterInfo index="0x5C" name="Mixers/Equalizers Coefficient Management Register 3">
+      <Bits range="7:0" field="COEFFICIENT_MEMORY_ACCESS" default="0" type="Coeff" desc="This address is reserved to coefficient memory access in RW mode according to an enhanced protoco" />
+    </RegisterInfo>
+    <RegisterInfo index="0x5D" name="Mixers/Equalizers Coefficient Management Register 4">
+      <Bits range="7:2" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="1" field="CLEAN_CACHE" default="0" desc="When high it allows cache cleaning (reset to 0) upon cache2biquad transfer." />
+      <Bits range="0" field="COEFF_CACHE2BIQUAD" default="0" desc="Coefficient cache-to-biquad transfer issue after cache precharge. Coefficients will be transferred from cache memory to local biquadratic cell memory addressed by coeff_filt_addr (if no biquadratic cell is" />
+    </RegisterInfo>
+    <RegisterInfo index="0x5E" name="Clip Bits Register 1">
+      <Bits range="7" field="MIX_EQ_CLIP_4" default="0" desc="High when there is a saturation on mix_eq output ch4 (cleared on write 0)" />
+      <Bits range="6" field="MIX_EQ_CLIP_3" default="0" desc="High when there is a saturation on mix_eq output ch3 (cleared on write 0)" />
+      <Bits range="5" field="MIX_EQ_CLIP_2" default="0" desc="High when there is a saturation on mix_eq output ch2 (cleared on write 0)" />
+      <Bits range="4" field="MIX_EQ_CLIP_1" default="0" desc="High when there is a saturation on mix_eq output ch1 (cleared on write 0)" />
+      <Bits range="3" field="VOL_CLIP_4" default="0" desc="High when there is a saturation on volume output ch4 (cleared on write 0)" />
+      <Bits range="2" field="VOL_CLIP_3" default="0" desc="High when there is a saturation on volume output ch3 (cleared on write 0)" />
+      <Bits range="1" field="VOL_CLIP_2" default="0" desc="High when there is a saturation on volume output ch2 (cleared on write 0)" />
+      <Bits range="0" field="VOL_CLIP_1" default="0" desc="High when there is a saturation on volume output ch1 (cleared on write 0)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x5F" name="Clip Bits Register 2">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="ST_CLIP" default="0" desc="High when there is a saturation on sidetone output (cleared on write 0)" />
+      <Bits range="5" field="DWS_CLIP_2" default="0" desc="High when there is a saturation on DWS2 output (cleared on write 0)" />
+      <Bits range="4" field="DWS_CLIP_1" default="0" desc="High when there is a saturation on DWS1 output (cleared on write 0)" />
+      <Bits range="3" field="OVS_PDM_CLIP_2" default="0" desc="High when there is a saturation on PDM2 output (cleared on write 0)" />
+      <Bits range="2" field="OVS_PDM_CLIP_1" default="0" desc="High when there is a saturation on PDM1 output (cleared on write 0)" />
+      <Bits range="1" field="OVS_SDM_CLIP_2" default="0" desc="High when there is a saturation on SDM2 output (cleared on write 0)" />
+      <Bits range="0" field="OVS_SDM_CLIP_1" default="0" desc="High when there is a saturation on SDM1 output (cleared on write 0)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x60" name="Clip Bits Register 3">
+      <Bits range="7" field="SRC2O_CLIP_2" default="0" desc="High when there is a saturation on SRC2 output ch2 (cleared on write 0)" />
+      <Bits range="6" field="SRC2O_CLIP_1" default="0" desc="High when there is a saturation on SRC2 output ch1 (cleared on write 0)" />
+      <Bits range="5" field="SRC2I_CLIP_2" default="0" desc="High when there is a saturation on SRC2 input ch2 (cleared on write 0)" />
+      <Bits range="4" field="SRC2I_CLIP_1" default="0" desc="High when there is a saturation on SRC2 input ch1 (cleared on write 0)" />
+      <Bits range="3" field="SRC1O_CLIP_2" default="0" desc="High when there is a saturation on SRC1 output ch2 (cleared on write 0)" />
+      <Bits range="2" field="SRC1O_CLIP_1" default="0" desc="High when there is a saturation on SRC1 output ch1 (cleared on write 0)" />
+      <Bits range="1" field="SRC1I_CLIP_2" default="0" desc="High when there is a saturation on SRC1 input ch2 (cleared on write 0)" />
+      <Bits range="0" field="SRC1I_CLIP_1" default="0" desc="High when there is a saturation on SRC1 input ch1 (cleared on write 0)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x80" name="Analog Block Enable">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="EN_MDET_COMP" default="0" desc="Mic detection comparator enable 0 = Comparator is disabled 1 = Comparator is enabled I2C_SCL" />
+      <Bits range="5" field="REFGEN_EN_BG" default="0" desc="Bandgap enable 0 = Bandgap is disabled 1 = Bandgap is enabled I2C_SCL" />
+      <Bits range="4" field="LDO_N_EN" default="0" desc="Negative LDO (-1.45V) enable 0 = LDO is disabled 1 = LDO is enabled I2C_SCL" />
+      <Bits range="3" field="LDO_P_EN" default="0" desc="Positive LDO (+1.65V) enable 0 = LDO is disabled 1 = LDO is enabled I2C_SCL" />
+      <Bits range="2" field="LDO_DIG_EN" default="0" desc="Clean LDO (+1.2V or +1.0V) enable 0 = LDO is disabled (default) 1 = LDO is enabled I2C_SCL" />
+      <Bits range="1" field="PLL_SELCKEXT" default="0" desc="PLL bypass 0 = PLL is functional 1 = PLL is bypassed I2C_SCL" />
+      <Bits range="0" field="PLL_EN" default="0" desc="PLL enable 0 = PLL is disabled 1 = PLL is enabled I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x81" name="Analog Block Status Register 1">
+      <Bits range="7" field="MDET_VOUT_SHORT" default="0" desc="Button detection comparator output 0 = Button not detected 1 = Button detected I2C_SCL" />
+      <Bits range="6" field="MDET_VOUT_MIC" default="0" desc="Mic detection comparator output 0 = Mic not detected 1 = Mic detected I2C_SCL" />
+      <Bits range="5" field="LDO_N_RDY" default="0" desc="Negative LDO (-1.45V) status 0 = Not ready 1 = Ready I2C_SCL" />
+      <Bits range="4" field="LDO_P_RDY" default="0" desc="Positive LDO (+1.65V) status 0 = Not ready 1 = Ready I2C_SCL" />
+      <Bits range="3" field="LDO_DIG_RDY" default="0" desc="Clean LDO (+1.2V or +1.0V) status 0 = Not ready 1 = Ready I2C_SCL" />
+      <Bits range="2" field="AVDD18_GOOD" default="0" desc="1.8V supply status 0 = 1.8V is bad 1 = 1.8V is good I2C_SCL" />
+      <Bits range="1" field="CKG_LOCK_ROUGH" default="0" desc="PLL rough lock signal (2% precision) 0 = PLL not locked 1 = PLL locked (less then 2% far from target 12.288MHz frequency) I2C_SCL" />
+      <Bits range="0" field="CKG_LOCK_FINE" default="0" desc="PLL fine lock signal (0.25% precision) 0 = PLL not locked 1 = PLL locked (less then 0.25% far from target 12.288MHz frequency) I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x82" name="Pad/Analog Block Settings">
+      <Bits range="7:5" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="4" field="DIG_PDB" default="1" desc="Digital pads power down (active low) 0 = Power-down mode 1 = Functional mode I2C_SCL" />
+      <Bits range="3:2" field="I2C_SR[1:0]" default="0" desc="I2C pads slew rate setting 0 = Weakest 1 = … 10 = … 11 = Strongest I2C_SCL" />
+      <Bits range="1" field="INV_CALLOOP" default="0" desc="Invert current calibration loop 0 = Normal 1 = Inverted I2C_SCL" />
+      <Bits range="0" field="FORCE_CALEXEC" default="0" desc="Force current calibration execution 0 = Do not execute 1 = Execute I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x83" name="Analog Block Status Register 2">
+      <Bits range="7:1" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="0" field="CALIB_DONE" default="0" desc="Current calibration execution done 0 = Not done 1 = Done" />
+    </RegisterInfo>
+    <RegisterInfo index="0x84" name="Charge Pump Settings Register 1">
+      <Bits range="7:6" field="HVCP_SOFT_START_TIME[1:0]" default="10" desc="Soft start time selection for High Voltage charge pump: 0 = 100 uSec 1 = 300 uSec 10 = 500 uSec 11 = 700 uSec" />
+      <Bits range="5" field="HVCPCK_FREQ" default="0" desc="Frequency selector for High Voltage charge pump 0 = 2.048 MHz 1 = 4.096 MHz" />
+      <Bits range="4" field="HVCPCK_PHASE" default="0" desc="Phase selector for High Voltage charge pump 0 = Half 12MHz clock cycle delay applied to HV charge pump clock 1 = No delay applied to HV" />
+      <Bits range="3:2" field="LVCP_SOFT_START_TIME[1:0]" default="10" desc="Soft start time selection for Low Voltage charge pump: 0 = 200 uSec 1 = 500 uSec 10 = 1000 uSec 11 = 1300 uSec" />
+      <Bits range="1" field="LVCPCK_FREQ" default="0" desc="Frequency selector for Low Voltage charge pump 0 = 4.096 MHz 1 = 6.144 MHz" />
+      <Bits range="0" field="LVCPCK_PHASE" default="0" desc="Phase selector for Low Voltage charge pump 0 = Half 12MHz clock cycle delay applied to LV charge pump clock 1 = No delay applied to LV" />
+    </RegisterInfo>
+    <RegisterInfo index="0x85" name="Charge Pump Settings Register 2">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6:4" field="LVCP_CK_PROGH[2:0]" default="1" desc="Low voltage charge pump high side clock programmability. The high side clock used is equal to 4.096MHz (or 6.144MHz) divided by: 0 = 1 1 = 2" />
+      <Bits range="3:1" field="LVCP_CK_PROGL[2:0]" default="11" desc="Low voltage charge pump low side clock programmability. The low side clock used is equal to 4.096MHz (or 6.144MHz) divided by: 0 = 1 1 = 2" />
+      <Bits range="0" field="LVCP_EN" default="0" desc="Low voltage charge pump enable 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x86" name="Charge Pump Settings Register 3">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6:4" field="HVCP_CK_PROGH[2:0]" default="1" desc="High voltage charge pump high side clock programmability. The high side clock used is equal to 2.048MHz (or 4.096MHz) divided by: 0 = 1 1 = 2" />
+      <Bits range="3:1" field="HVCP_CK_PROGL[2:0]" default="11" desc="High voltage charge pump low side clock programmability. The low side clock used is equal to 2.048MHz (or 4.096 MHz) divided by: 0 = 1 1 =" />
+      <Bits range="0" field="HVCP_EN" default="0" desc="High voltage charge pump enable 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x87" name="Clock Settings">
+      <Bits range="7" field="PLL_ON_CPUMP" default="0" desc="Input source clock for charge pumps clock generation 0 = FLL 1 = PLL" />
+      <Bits range="6" field="INVCPH_CLK" default="0" desc="Enables HV charge pump clock inversion 0 = Normal 1 = Inverted" />
+      <Bits range="5" field="INVCPL_CLK" default="0" desc="Enables LV charge pump clock inversion 0 = Normal 1 = Inverted" />
+      <Bits range="4" field="INVCLK_ADC12_TO_6M" default="0" desc="Selector of 6 MHz internal clock active edge in cross domain paths from ADC1 and ADC1 launching domain to 6MHz capturing domain 0 = 6 MHz captures" />
+      <Bits range="3" field="INV_ADC12_CLK" default="0" desc="Selector of 6 MHz polarity for clock provided to ADC1 and ADC2 0 = 6 MHz is provided not inverted to ADC1 and ADC2 1 = 6" />
+      <Bits range="2" field="INVCLK_6M_TO_12M" default="0" desc="Selector of 12 MHz internal clock active edge in cross domain paths from 6 MHz launching domain to 12 MHz capturing domain 0 = 12 MHz captures" />
+      <Bits range="1" field="INVCLK_12M_TO_6M" default="0" desc="Selector of 12 MHz internal clock active edge in cross domain paths from 12 MHz launching domain to 6 MHz capturing domain 0 = 12 MHz launches" />
+      <Bits range="0" field="INVREC_CLK" default="0" desc="Selector of 6 MHz polarity for clock provided to reconstruction filter DACs 0 = 6 MHz is provided not inverted to DACs 1 = 6 MHz is" />
+    </RegisterInfo>
+    <RegisterInfo index="0x88" name="Headphone Settings">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="HP_DRV_COMP" default="1" desc="Enable for headphone class G stage amplitude response pre-compensation during oversampling elaboration 0 = Class G compensation is not applied 1 = Class G compensation is applied" />
+      <Bits range="5" field="HP2_AMP_EN" default="0" desc="Headphone 2 amplifier enable 0 = Disabled 1 = Enabled" />
+      <Bits range="4" field="HP2_EN_HCS" default="0" desc="Headphone 2 amplifier bias current setting 0 = Standard bias current 1 = Higher bias current for better performance" />
+      <Bits range="3" field="HP2_NOISE_SWITCH" default="0" desc="Headphone 2 amplifier noise switch, to improve noise in case of zero signal 0 = Disabled 1 = Enabled" />
+      <Bits range="2" field="HP1_AMP_EN" default="0" desc="Headphone 1 amplifier enable 0 = Disabled 1 = Enabled" />
+      <Bits range="1" field="HP1_EN_HCS" default="0" desc="Headphone 1 amplifier bias current setting 0 = Standard bias current 1 = Higher bias current for better performance" />
+      <Bits range="0" field="HP1_NOISE_SWITCH" default="0" desc="Headphone 1 amplifier noise switch, to improve noise in case of zero signal 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x89" name="Power Amplifier Enable">
+      <Bits range="7:5" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="4" field="HP2_ENABLED" default="0" desc="Delayed headphone 2 amplifier enable signal" />
+      <Bits range="3" field="HP1_ENABLED" default="0" desc="Delayed headphone 1 amplifier enable signal" />
+      <Bits range="2" field="EP_REC_ENDLY" default="0" desc="Reconstruction Filter 0, delayed enable signal" />
+      <Bits range="1" field="HP2_REC_ENDLY" default="0" desc="Reconstruction Filter 2, delayed enable signal" />
+      <Bits range="0" field="HP1_REC_ENDLY" default="0" desc="Reconstruction Filter 1, delayed enable signal" />
+    </RegisterInfo>
+    <RegisterInfo index="0x8A" name="Headphone / Earphone Settings">
+      <Bits range="7:6" field="HP_ENDLY_TIM[1:0]" default="0" desc="Headphone 1 and 2 delay between enable and enable_d 0 = 300uSec 1 = 150uSec 10 = 450uSec 11 = 600uSec" />
+      <Bits range="5:4" field="HP_SHTMSK_TIM[1:0]" default="0" desc="Headphone 1 and 2 short detection mask duration after enable_d 0 = 300uSec 1 = 150uSec 10 = 450uSec 11 = 600uSec" />
+      <Bits range="3:2" field="EP_ITRIM[1:0]" default="10" desc="Earphone amplifier bias current 0 = 33% 1 = -5% 10 = Normal 11 = -20%" />
+      <Bits range="1" field="EP_HIIOPA" default="0" desc="Earphone amplifier output stage current 0 = Normal 1 = 30%" />
+      <Bits range="0" field="EP_AMP_EN" default="0" desc="Earphone amplifier enable 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x8B" name="Reconstruction Filter Settings Register 1">
+      <Bits range="7:6" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="5:4" field="REC_ENDLY_TIM[1:0]" default="0" desc="Reconstruction filters delay between enable and enable_d 0 = 50uSec 1 = 20uSec 10 = 100uSec 11 = 200uSec" />
+      <Bits range="3:2" field="REC_CURR[3:2]" default="1" desc="Reconstruction filters 2nd/3rd Op-amps current programmability 0 = -33% Op-amps 2月3日 current 1 = TYP Op-amps 2月3日 current 10 = 33% Op-amps 2月3日 current 11 = 66%" />
+      <Bits range="1:0" field="REC_CURR[1:0]" default="1" desc="Reconstruction filters 1st Op-amp current programmability: 0 = -33% Op-amp 1 current 1 = TYP Op-amp 1 current 10 = 33% Op-amp 1 current 11 = 66%" />
+    </RegisterInfo>
+    <RegisterInfo index="0x8C" name="Reconstruction Filter Settings Register 2">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="HP_LO" default="0" desc="When high it configures HP as line-out" />
+      <Bits range="5" field="EP_REC_FORCEZ" default="0" desc="Earphone DAC force zero input 0 = Normal 1 = Input forced to zero" />
+      <Bits range="4" field="HP2_REC_FORCEZ" default="0" desc="Headphone 2 DAC force zero input 0 = Normal 1 = Input forced to zero" />
+      <Bits range="3" field="HP1_REC_FORCEZ" default="0" desc="Headphone 1 DAC force zero input 0 = Normal 1 = Input forced to zero" />
+      <Bits range="2" field="EP_REC_EN" default="0" desc="Reconstruction filter 0 enable 0 = Disabled 1 = Enabled" />
+      <Bits range="1" field="HP2_REC_EN" default="0" desc="Reconstruction filter 2 enable 0 = Disabled 1 = Enabled" />
+      <Bits range="0" field="HP1_REC_EN" default="0" desc="Reconstruction filter 1 enable 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x8D" name="Reconstruction Filter Settings Register 3">
+      <Bits range="7:6" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="5" field="HP2_REC_RZDLY" default="0" desc="Reconstruction Filter 2, Return to Zero (R2Z) holding time: 0 = R2Z at zero for 1ns. 1 = R2Z at zero for 2 ns." />
+      <Bits range="4" field="HP2_REC_RZ" default="0" desc="Reconstruction Filter 2, Return to Zero (R2Z) enabling: 0 = Return to zero Disabled 1 = Return to zero Enabled" />
+      <Bits range="3" field="HP1_REC_RZDLY" default="0" desc="Reconstruction Filter 1, Return to Zero (R2Z) holding time: 0 = R2Z at zero for 1ns. 1 = R2Z at zero for 2 ns." />
+      <Bits range="2" field="HP1_REC_RZ" default="0" desc="Reconstruction Filter 1, Return to Zero (R2Z) enabling: 0 = Return to zero Disabled 1 = Return to zero Enabled" />
+      <Bits range="1" field="EP_REC_RZDLY" default="0" desc="Reconstruction Filter 0, Return to Zero (R2Z) holding time: 0 = R2Z at zero for 1ns. 1 = R2Z at zero for 2 ns." />
+      <Bits range="0" field="EP_REC_RZ" default="0" desc="Reconstruction Filter 0, Return to Zero (R2Z) enabling: 0 = Return to zero Disabled 1 = Return to zero Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x8E" name="DWA Settings">
+      <Bits range="7:6" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="5" field="DWA1_INV_SGN" default="0" desc="Inverts DAC input signal polarity positive to negative. 0 = Normal 1 = Inverted" />
+      <Bits range="4:3" field="DWA1_MODE[1:0]" default="0" desc="Selector for DWA operating mode, to SDM1 channel output. 0 = Single DI-DWA 1 = Double DI-DWA 10 = DWA OFF 11 = DWA OFF" />
+      <Bits range="2" field="DWA2_INV_SGN" default="0" desc="Inverts DAC input signal polarity positive to negative. 0 = Normal 1 = Inverted" />
+      <Bits range="1:0" field="DWA2_MODE[1:0]" default="0" desc="Selector for DWA operating mode. This selection applies to SDM 2 channel output. 0 = Single DI-DWA 1 = Double DI-DWA 10 = DWA OFF 11 =" />
+    </RegisterInfo>
+    <RegisterInfo index="0x8F" name="SDM Volume Delay">
+      <Bits range="7:0" field="VOL_DLY_SEL[7:0]" default="0" desc="Digital-to-analog delay selection for concurrent volume issuing in mixed digital/analog volume control mode (SDM 1 and SDM 2 channels only)" />
+    </RegisterInfo>
+    <RegisterInfo index="0x90" name="Reference Group Settings Register 1">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6" field="LDO_DIG_SEL_1P2" default="1" desc="Clean LDO output voltage selection 0 = 1.0V 1 = 1.2V (default)" />
+      <Bits range="5:1" field="REFGEN_FC_TIM[4:0]" default="10" desc="Reference group fast charge enable pulse duration. From 0 to 64 ms." />
+      <Bits range="0" field="DAC_CURR_REF_EN" default="0" desc="Reference group: clean BG/R current generator enable 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x91" name="ADC Settings Register 1">
+      <Bits range="7:5" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="4" field="ADC_SEL_IVBG_CLEAN" default="0" desc="ADCs: Select between the clean IBGR and normal IBGR 0 = IBG normal 1 = IBG clean" />
+      <Bits range="3" field="ADC_CLKOUT_INV" default="0" desc="ADCs Output Clock Polarity reversal 0 = Normal 1 = Reversed" />
+      <Bits range="2" field="ADC_LTC_DEL" default="0" desc="ADCs: Select length of the latch phase of the comparators 0 = Short phase 1 = Long phase" />
+      <Bits range="1" field="ADC_SCR_EN" default="1" desc="ADCs: Randomizer enable 0 = Disabled 1 = Enabled" />
+      <Bits range="0" field="ADC_SHP_EN" default="1" desc="ADCs: Randomizer first order shaping enable 0 = Zero-order 1 = First-order" />
+    </RegisterInfo>
+    <RegisterInfo index="0x92" name="ADC Settings Register 2">
+      <Bits range="7:6" field="ADC_ICINT1[1:0]" default="0" desc="ADCs first integrator op-amp current control 0 = 7.5uA 1 = 10.0uA 10 = 12.5uA 11 = 15.0uA" />
+      <Bits range="5:4" field="ADC_ICINT2[1:0]" default="0" desc="ADCs second integrator op-amp current control 0 = 7.5uA 1 = 10.0uA 10 = 12.5uA 11 = 15.0uA" />
+      <Bits range="3:2" field="ADC_ICOMP[1:0]" default="0" desc="ADCs Comparator Preamplifier Current Control 0 = 2.5uA 1 = 5.0uA 10 = 7.5uA 11 = 10.0uA" />
+      <Bits range="1:0" field="ADC_IS2D[1:0]" default="0" desc="ADCs Single to Differential OP-AMPs Current Control 0 = 20uA 1 = 25uA 10 = 30uA 11 = 35uA" />
+    </RegisterInfo>
+    <RegisterInfo index="0x93" name="ADC Settings Register 3">
+      <Bits range="7" field="ADC2_EN_FCAP" default="0" desc="ADC2 anti-aliasing filter bandwidth 0= larger bandwidth (default) 1 = shortened bandwidth" />
+      <Bits range="6" field="ADC1_EN_FCAP" default="0" desc="ADC1 anti-aliasing filter bandwidth 0= larger bandwidth (default) 1 = shortened bandwidth" />
+      <Bits range="5:4" field="ADC_VBGRSEL[1:0]" default="0" desc="ADCs: VMID control when ADC_VREFCTL 1 0 = 0.9V 1 = 0.945V 10 = 0.967mV 11 = 0.990mV" />
+      <Bits range="3:2" field="ADC_VMIDSEL[1:0]" default="1" desc="ADCs: common mode voltage level control 0 = 1.00V 1 = 0.95V 10 = 0.90V 11 = 0.85V" />
+      <Bits range="1:0" field="ADC_VREFCTL[1:0]" default="0" desc="ADCs: VMID generation control 0 = VMID tracks VDD 1 = VMID is generated from IBG*R 10 = Fast start (VMID tracks VDD) 11 = NOT USED" />
+    </RegisterInfo>
+    <RegisterInfo index="0x94" name="ADC Settings Register 4">
+      <Bits range="7:4" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="3" field="ADC2_FG" default="0" desc="ADC2: When in power-down, put the internal microphone input to ground with pull-down register 0 = Open 1 = Ground" />
+      <Bits range="2" field="ADC1_FG" default="0" desc="ADC1: When in power-down, put the internal microphone input to ground with pull-down register 0 = Open 1 = Ground" />
+      <Bits range="1" field="MIC_CLK_PD" default="1" desc="ADC2 and ADC1: Power Down of the phase generator block 0 = Power-up 1 = Power-down" />
+      <Bits range="0" field="ADC12_DIV3" default="0" desc="ADCs power consumption 0 = Normal power 1 = 1/3 power" />
+    </RegisterInfo>
+    <RegisterInfo index="0x95" name="FLL / Spread Spectrum Settings Register 1">
+      <Bits range="7:2" field="SSC_DIV_SET[5:0]" default="10001" desc="Set the FLL frequency modulation period during spread spectrum control I2C_SCL" />
+      <Bits range="1" field="SSC_EN" default="0" desc="Spread Spectrum enable 0 = SSC is disabled 1 = SSC is enabled I2C_SCL" />
+      <Bits range="0" field="FLL_EN" default="0" desc="FLL enable 0 = FLL is disabled 1 = FLL is enabled I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x96" name="FLL / Spread Spectrum Settings Register 2">
+      <Bits range="7" field="FLL_SATSEL" default="0" desc="FLL saturation pulses number selection 0 = max UP/DOWN duration is 31 clock cycles 1 = max UP/DOWN duration is 15 clock cycles I2C_SCL" />
+      <Bits range="6:0" field="SSC_MEAN_SET[6:0]" default="1110001" desc="Set the mean FLL frequency during spread spectrum control I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x97" name="FLL / Spread Spectrum Settings Register 3">
+      <Bits range="7:6" field="FLL_ANA_DEC[1:0]" default="0" desc="FLL Decimation rate selection 0 = Always ON 1 = Active 1 every 8 input clock cycles 10 = Active 1 every 16 input clock cycles 11" />
+      <Bits range="5:0" field="SSC_SPREAD_SET[5:0]" default="10010" desc="Set the amplitude of FLL frequency modulation during spread spectrum control I2C_SCL" />
+    </RegisterInfo>
+    <RegisterInfo index="0x98" name="FLL Status">
+      <Bits range="7:2" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="1" field="FLL_CKREADY" default="0" desc="High when FLL Digital Clock Output is ready" />
+      <Bits range="0" field="FLL_DIG_LOCK" default="0" desc="High when FLL Digital Clock is locked" />
+    </RegisterInfo>
+    <!-- Use type="Gain" to indicate gain register -->
+    <RegisterInfo index="0x12" name="ADC Gain Register 1">
+      <Bits range="7:5" field="RSVD" default="000" desc="Reserved" />
+      <Bits range="4:0" field="MICPGA1_GAIN[4:0]" default="00000" type="Gain" desc="MICPGA1 gain">
+        <Capbility value="0x00" decibel="36.18" />
+        <Capbility value="0x01" decibel="33.86" />
+        <Capbility value="0x02" decibel="33.20" />
+        <Capbility value="0x03" decibel="32.01" />
+        <Capbility value="0x04" decibel="30.96" />
+        <Capbility value="0x05" decibel="30.02" />
+        <Capbility value="0x06" decibel="29.17" />
+        <Capbility value="0x07" decibel="28.01" />
+        <Capbility value="0x08" decibel="26.99" />
+        <Capbility value="0x09" decibel="25.77" />
+        <Capbility value="0x0A" decibel="25.22" />
+        <Capbility value="0x0B" decibel="24.20" />
+        <Capbility value="0x0C" decibel="22.84" />
+        <Capbility value="0x0D" decibel="22.02" />
+        <Capbility value="0x0E" decibel="20.92" />
+        <Capbility value="0x0F" decibel="19.91" />
+        <Capbility value="0x10" decibel="19.00" />
+        <Capbility value="0x11" decibel="17.88" />
+        <Capbility value="0x12" decibel="17.12" />
+        <Capbility value="0x13" decibel="15.94" />
+        <Capbility value="0x14" decibel="15.08" />
+        <Capbility value="0x15" decibel="14.97" />
+        <Capbility value="0x16" decibel="12.97" />
+        <Capbility value="0x17" decibel="11.94" />
+        <Capbility value="0x18" decibel="10.98" />
+        <Capbility value="0x19" decibel="9.94" />
+        <Capbility value="0x1A" decibel="36.18" />
+        <Capbility value="0x1B" decibel="36.18" />
+        <Capbility value="0x1C" decibel="36.18" />
+        <Capbility value="0x1D" decibel="36.18" />
+        <Capbility value="0x1E" decibel="36.18" />
+        <Capbility value="0x1F" decibel="36.18" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x13" name="ADC Gain Register 2">
+      <Bits range="7:5" field="RSVD" default="000" desc="Reserved" />
+      <Bits range="4:0" field="MICPGA2_GAIN[4:0]" default="00000" type="Gain" desc="MICPGA2 gain">
+        <Capbility value="0x00" decibel="36.18" />
+        <Capbility value="0x01" decibel="33.86" />
+        <Capbility value="0x02" decibel="33.20" />
+        <Capbility value="0x03" decibel="32.01" />
+        <Capbility value="0x04" decibel="30.96" />
+        <Capbility value="0x05" decibel="30.02" />
+        <Capbility value="0x06" decibel="29.17" />
+        <Capbility value="0x07" decibel="28.01" />
+        <Capbility value="0x08" decibel="26.99" />
+        <Capbility value="0x09" decibel="25.77" />
+        <Capbility value="0x0A" decibel="25.22" />
+        <Capbility value="0x0B" decibel="24.20" />
+        <Capbility value="0x0C" decibel="22.84" />
+        <Capbility value="0x0D" decibel="22.02" />
+        <Capbility value="0x0E" decibel="20.92" />
+        <Capbility value="0x0F" decibel="19.91" />
+        <Capbility value="0x10" decibel="19.00" />
+        <Capbility value="0x11" decibel="17.88" />
+        <Capbility value="0x12" decibel="17.12" />
+        <Capbility value="0x13" decibel="15.94" />
+        <Capbility value="0x14" decibel="15.08" />
+        <Capbility value="0x15" decibel="14.97" />
+        <Capbility value="0x16" decibel="12.97" />
+        <Capbility value="0x17" decibel="11.94" />
+        <Capbility value="0x18" decibel="10.98" />
+        <Capbility value="0x19" decibel="9.94" />
+        <Capbility value="0x1A" decibel="36.18" />
+        <Capbility value="0x1B" decibel="36.18" />
+        <Capbility value="0x1C" decibel="36.18" />
+        <Capbility value="0x1D" decibel="36.18" />
+        <Capbility value="0x1E" decibel="36.18" />
+        <Capbility value="0x1F" decibel="36.18" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x14" name="ADC Gain Register 3">
+      <Bits range="7:4" field="AUXPGA2_GAIN[3:0]" default="0000" desc="AUXPGA2 gain">
+        <Capbility value="0x00" decibel="29.25" />
+        <Capbility value="0x01" decibel="25.58" />
+        <Capbility value="0x02" decibel="22.92" />
+        <Capbility value="0x03" decibel="20.83" />
+        <Capbility value="0x04" decibel="17.58" />
+        <Capbility value="0x05" decibel="15.07" />
+        <Capbility value="0x06" decibel="12.04" />
+        <Capbility value="0x07" decibel="8.79" />
+        <Capbility value="0x08" decibel="6.02" />
+        <Capbility value="0x09" decibel="2.92" />
+        <Capbility value="0x0A" decibel="0" />
+        <Capbility value="0x0B" decibel="-2.92" />
+        <Capbility value="0x0C" decibel="-6.02" />
+        <Capbility value="0x0D" decibel="-6.02" />
+        <Capbility value="0x0E" decibel="-6.02" />
+        <Capbility value="0x0F" decibel="-6.02" />
+      </Bits>
+      <Bits range="3:0" field="AUXPGA1_GAIN[3:0]" default="0000" desc="AUXPGA1 gain">
+        <Capbility value="0x00" decibel="29.25" />
+        <Capbility value="0x01" decibel="25.58" />
+        <Capbility value="0x02" decibel="22.92" />
+        <Capbility value="0x03" decibel="20.83" />
+        <Capbility value="0x04" decibel="17.58" />
+        <Capbility value="0x05" decibel="15.07" />
+        <Capbility value="0x06" decibel="12.04" />
+        <Capbility value="0x07" decibel="8.79" />
+        <Capbility value="0x08" decibel="6.02" />
+        <Capbility value="0x09" decibel="2.92" />
+        <Capbility value="0x0A" decibel="0" />
+        <Capbility value="0x0B" decibel="-2.92" />
+        <Capbility value="0x0C" decibel="-6.02" />
+        <Capbility value="0x0D" decibel="-6.02" />
+        <Capbility value="0x0E" decibel="-6.02" />
+        <Capbility value="0x0F" decibel="-6.02" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x27" name="Headphone Gain Analog-to-Analog (A2A) Path">
+      <Bits range="7:4" field="HP2_A2A_GAIN[3:0]" default="0000" type="Gain" desc="Headphone 2 amplifier gain setting (only when HP2_IN_SEL -&gt; 11, i.e. analog-to-analog mode)">
+        <Capbility value="0x00" decibel="3.2" />
+        <Capbility value="0x01" decibel="2.2" />
+        <Capbility value="0x02" decibel="1.2" />
+        <Capbility value="0x03" decibel="0.2" />
+        <Capbility value="0x04" decibel="-0.8" />
+        <Capbility value="0x05" decibel="-1.8" />
+        <Capbility value="0x06" decibel="-2.8" />
+        <Capbility value="0x07" decibel="-3.8" />
+        <Capbility value="0x08" decibel="-4.8" />
+        <Capbility value="0x09" decibel="-5.8" />
+        <Capbility value="0x0a" decibel="-6.8" />
+        <Capbility value="0x0b" decibel="-7.8" />
+        <Capbility value="0x0c" decibel="-8.8" />
+        <Capbility value="0x0d" decibel="-9.8" />
+        <Capbility value="0x0e" decibel="-10.8" />
+        <Capbility value="0x0f" decibel="-11.8" />
+      </Bits>
+      <Bits range="3:0" field="HP1_A2A_GAIN[3:0]" default="0000" type="Gain" desc="Headphone 1 amplifier gain setting (only when HP1_IN_SEL -&gt; 11, i.e. analog-to-analog mode)">
+        <Capbility value="0x00" decibel="3.2" />
+        <Capbility value="0x01" decibel="2.2" />
+        <Capbility value="0x02" decibel="1.2" />
+        <Capbility value="0x03" decibel="0.2" />
+        <Capbility value="0x04" decibel="-0.8" />
+        <Capbility value="0x05" decibel="-1.8" />
+        <Capbility value="0x06" decibel="-2.8" />
+        <Capbility value="0x07" decibel="-3.8" />
+        <Capbility value="0x08" decibel="-4.8" />
+        <Capbility value="0x09" decibel="-5.8" />
+        <Capbility value="0x0a" decibel="-6.8" />
+        <Capbility value="0x0b" decibel="-7.8" />
+        <Capbility value="0x0c" decibel="-8.8" />
+        <Capbility value="0x0d" decibel="-9.8" />
+        <Capbility value="0x0e" decibel="-10.8" />
+        <Capbility value="0x0f" decibel="-11.8" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x29" name="Earphone Settings">
+      <Bits range="7:4" field="RSVD" default="0000" desc="Reserved" />
+      <Bits range="3" field="EP_HIGHGAIN" default="0" type="Gain" desc="Earphone amplifier gain setting">
+        <Capbility value="0x0" decibel="0" />
+        <Capbility value="0x1" decibel="3" />
+      </Bits>
+      <Bits range="2:1" field="EAR_IN_SEL[1:0]" default="00" desc="Input selector for earphone DAC 0 = MUTE 1 = SDM1 channel 10 = SDM2 channel 11 = MUTE" />
+      <Bits range="0" field="EAR_EN" default="0" desc="Enable for earphone output path 0 = Disabled 1 = Enabled" />
+    </RegisterInfo>
+    <RegisterInfo index="0x56" name="Volume Selection on Channel 1">
+      <Bits range="7:0" field="VOL_SEL_1[7:0]" default="0" type="Gain" desc="Volume selector on SDM 1 channel (target volume if volume ramp is selected)" >
+        <Capbility range="0x01~0xff" dbrange="-91.0~36.0" step="0.5" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x57" name="Volume Selection on Channel 2">
+      <Bits range="7:0" field="VOL_SEL_2[7:0]" default="0" type="Gain" desc="Volume selector on SDM 2 channel (target volume if volume ramp is selected)" >
+        <Capbility range="0x01~0xff" dbrange="-91.0~36.0" step="0.5" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x58" name="Volume Selection on Channel 3">
+      <Bits range="7:0" field="VOL_SEL_3[7:0]" default="0" type="Gain" desc="Volume selector on PDM 1 channel (target volume if volume ramp is selected)" >
+        <Capbility range="0x01~0xff" dbrange="-91.0~36.0" step="0.5" />
+      </Bits>
+    </RegisterInfo>
+    <RegisterInfo index="0x59" name="Volume Selection on Channel 4">
+      <Bits range="7:0" field="VOL_SEL_4[7:0]" default="0" type="Gain" desc="Volume selector on PDM 2 channel (target volume if volume ramp is selected)" >
+        <Capbility range="0x01~0xff" dbrange="-91.0~36.0" step="0.5" />
+      </Bits>
+    </RegisterInfo>
+  </Component>
+  <Component identifier="MODEM">
+    <!-- Digital gain in modem for nb -->
+    <RegisterInfo index="0x00" name="Digital Gain for NB in Modem">
+      <Bits range="7:0" field="DIGITAL_GAIN_NB" default="00101110" type="Gain" desc="Increase/Decrease voice stream volume">
+        <Capbility value="0x01" decibel="-36" />
+        <Capbility value="0x02" decibel="-35" />
+        <Capbility value="0x03" decibel="-34" />
+        <Capbility value="0x04" decibel="-33" />
+        <Capbility value="0x05" decibel="-32" />
+        <Capbility value="0x06" decibel="-31" />
+        <Capbility value="0x07" decibel="-30" />
+        <Capbility value="0x08" decibel="-29" />
+        <Capbility value="0x09" decibel="-28" />
+        <Capbility value="0x0A" decibel="-27" />
+        <Capbility value="0x0B" decibel="-26" />
+        <Capbility value="0x0C" decibel="-25" />
+        <Capbility value="0x0D" decibel="-24" />
+        <Capbility value="0x0E" decibel="-23" />
+        <Capbility value="0x0F" decibel="-22" />
+        <Capbility value="0x10" decibel="-21" />
+        <Capbility value="0x11" decibel="-20" />
+        <Capbility value="0x12" decibel="-19" />
+        <Capbility value="0x13" decibel="-18" />
+        <Capbility value="0x14" decibel="-17" />
+        <Capbility value="0x15" decibel="-16" />
+        <Capbility value="0x16" decibel="-15" />
+        <Capbility value="0x17" decibel="-14" />
+        <Capbility value="0x18" decibel="-13" />
+        <Capbility value="0x19" decibel="-12" />
+        <Capbility value="0x1A" decibel="-11" />
+        <Capbility value="0x1B" decibel="-10" />
+        <Capbility value="0x1C" decibel="-9" />
+        <Capbility value="0x1D" decibel="-8" />
+        <Capbility value="0x1E" decibel="-7" />
+        <Capbility value="0x1F" decibel="-6" />
+        <Capbility value="0x20" decibel="-5" />
+        <Capbility value="0x21" decibel="-4" />
+        <Capbility value="0x22" decibel="-3" />
+        <Capbility value="0x23" decibel="-2" />
+        <Capbility value="0x24" decibel="-1" />
+        <Capbility value="0x25" decibel="0" />
+        <Capbility value="0x26" decibel="1" />
+        <Capbility value="0x27" decibel="2" />
+        <Capbility value="0x28" decibel="3" />
+        <Capbility value="0x29" decibel="4" />
+        <Capbility value="0x2A" decibel="5" />
+        <Capbility value="0x2B" decibel="6" />
+        <Capbility value="0x2C" decibel="7" />
+        <Capbility value="0x2D" decibel="8" />
+        <Capbility value="0x2E" decibel="9" />
+        <Capbility value="0x2F" decibel="10" />
+        <Capbility value="0x30" decibel="11" />
+        <Capbility value="0x31" decibel="12" />
+      </Bits>
+    </RegisterInfo>
+    <!-- Digital gain in modem for wb -->
+    <RegisterInfo index="0x00" name="Digital Gain WB in Modem">
+      <Bits range="7:0" field="DIGITAL_GAIN_WB" default="00101110" type="Gain" desc="Increase/Decrease voice stream volume">
+        <Capbility value="0x01" decibel="-36" />
+        <Capbility value="0x02" decibel="-35" />
+        <Capbility value="0x03" decibel="-34" />
+        <Capbility value="0x04" decibel="-33" />
+        <Capbility value="0x05" decibel="-32" />
+        <Capbility value="0x06" decibel="-31" />
+        <Capbility value="0x07" decibel="-30" />
+        <Capbility value="0x08" decibel="-29" />
+        <Capbility value="0x09" decibel="-28" />
+        <Capbility value="0x0A" decibel="-27" />
+        <Capbility value="0x0B" decibel="-26" />
+        <Capbility value="0x0C" decibel="-25" />
+        <Capbility value="0x0D" decibel="-24" />
+        <Capbility value="0x0E" decibel="-23" />
+        <Capbility value="0x0F" decibel="-22" />
+        <Capbility value="0x10" decibel="-21" />
+        <Capbility value="0x11" decibel="-20" />
+        <Capbility value="0x12" decibel="-19" />
+        <Capbility value="0x13" decibel="-18" />
+        <Capbility value="0x14" decibel="-17" />
+        <Capbility value="0x15" decibel="-16" />
+        <Capbility value="0x16" decibel="-15" />
+        <Capbility value="0x17" decibel="-14" />
+        <Capbility value="0x18" decibel="-13" />
+        <Capbility value="0x19" decibel="-12" />
+        <Capbility value="0x1A" decibel="-11" />
+        <Capbility value="0x1B" decibel="-10" />
+        <Capbility value="0x1C" decibel="-9" />
+        <Capbility value="0x1D" decibel="-8" />
+        <Capbility value="0x1E" decibel="-7" />
+        <Capbility value="0x1F" decibel="-6" />
+        <Capbility value="0x20" decibel="-5" />
+        <Capbility value="0x21" decibel="-4" />
+        <Capbility value="0x22" decibel="-3" />
+        <Capbility value="0x23" decibel="-2" />
+        <Capbility value="0x24" decibel="-1" />
+        <Capbility value="0x25" decibel="0" />
+        <Capbility value="0x26" decibel="1" />
+        <Capbility value="0x27" decibel="2" />
+        <Capbility value="0x28" decibel="3" />
+        <Capbility value="0x29" decibel="4" />
+        <Capbility value="0x2A" decibel="5" />
+        <Capbility value="0x2B" decibel="6" />
+        <Capbility value="0x2C" decibel="7" />
+        <Capbility value="0x2D" decibel="8" />
+        <Capbility value="0x2E" decibel="9" />
+        <Capbility value="0x2F" decibel="10" />
+        <Capbility value="0x30" decibel="11" />
+        <Capbility value="0x31" decibel="12" />
+      </Bits>
+    </RegisterInfo>
+    <!-- Digital gain in modem for extra nb -->
+    <RegisterInfo index="0x00" name="Digital Gain for extra NB in Modem">
+      <Bits range="7:0" field="DIGITAL_GAIN_EXTRA" default="00101110" type="Gain" desc="Increase/Decrease voice stream volume">
+        <Capbility value="0x01" decibel="-36" />
+        <Capbility value="0x02" decibel="-35" />
+        <Capbility value="0x03" decibel="-34" />
+        <Capbility value="0x04" decibel="-33" />
+        <Capbility value="0x05" decibel="-32" />
+        <Capbility value="0x06" decibel="-31" />
+        <Capbility value="0x07" decibel="-30" />
+        <Capbility value="0x08" decibel="-29" />
+        <Capbility value="0x09" decibel="-28" />
+        <Capbility value="0x0A" decibel="-27" />
+        <Capbility value="0x0B" decibel="-26" />
+        <Capbility value="0x0C" decibel="-25" />
+        <Capbility value="0x0D" decibel="-24" />
+        <Capbility value="0x0E" decibel="-23" />
+        <Capbility value="0x0F" decibel="-22" />
+        <Capbility value="0x10" decibel="-21" />
+        <Capbility value="0x11" decibel="-20" />
+        <Capbility value="0x12" decibel="-19" />
+        <Capbility value="0x13" decibel="-18" />
+        <Capbility value="0x14" decibel="-17" />
+        <Capbility value="0x15" decibel="-16" />
+        <Capbility value="0x16" decibel="-15" />
+        <Capbility value="0x17" decibel="-14" />
+        <Capbility value="0x18" decibel="-13" />
+        <Capbility value="0x19" decibel="-12" />
+        <Capbility value="0x1A" decibel="-11" />
+        <Capbility value="0x1B" decibel="-10" />
+        <Capbility value="0x1C" decibel="-9" />
+        <Capbility value="0x1D" decibel="-8" />
+        <Capbility value="0x1E" decibel="-7" />
+        <Capbility value="0x1F" decibel="-6" />
+        <Capbility value="0x20" decibel="-5" />
+        <Capbility value="0x21" decibel="-4" />
+        <Capbility value="0x22" decibel="-3" />
+        <Capbility value="0x23" decibel="-2" />
+        <Capbility value="0x24" decibel="-1" />
+        <Capbility value="0x25" decibel="0" />
+        <Capbility value="0x26" decibel="1" />
+        <Capbility value="0x27" decibel="2" />
+        <Capbility value="0x28" decibel="3" />
+        <Capbility value="0x29" decibel="4" />
+        <Capbility value="0x2A" decibel="5" />
+        <Capbility value="0x2B" decibel="6" />
+        <Capbility value="0x2C" decibel="7" />
+        <Capbility value="0x2D" decibel="8" />
+        <Capbility value="0x2E" decibel="9" />
+        <Capbility value="0x2F" decibel="10" />
+        <Capbility value="0x30" decibel="11" />
+        <Capbility value="0x31" decibel="12" />
+      </Bits>
+    </RegisterInfo>
+    <!-- Digital gain in modem for extra wb -->
+    <RegisterInfo index="0x00" name="Digital Gain for extra WB in Modem">
+      <Bits range="7:0" field="DIGITAL_GAIN_EXTRA_WB" default="00101110" type="Gain" desc="Increase/Decrease voice stream volume">
+        <Capbility value="0x01" decibel="-36" />
+        <Capbility value="0x02" decibel="-35" />
+        <Capbility value="0x03" decibel="-34" />
+        <Capbility value="0x04" decibel="-33" />
+        <Capbility value="0x05" decibel="-32" />
+        <Capbility value="0x06" decibel="-31" />
+        <Capbility value="0x07" decibel="-30" />
+        <Capbility value="0x08" decibel="-29" />
+        <Capbility value="0x09" decibel="-28" />
+        <Capbility value="0x0A" decibel="-27" />
+        <Capbility value="0x0B" decibel="-26" />
+        <Capbility value="0x0C" decibel="-25" />
+        <Capbility value="0x0D" decibel="-24" />
+        <Capbility value="0x0E" decibel="-23" />
+        <Capbility value="0x0F" decibel="-22" />
+        <Capbility value="0x10" decibel="-21" />
+        <Capbility value="0x11" decibel="-20" />
+        <Capbility value="0x12" decibel="-19" />
+        <Capbility value="0x13" decibel="-18" />
+        <Capbility value="0x14" decibel="-17" />
+        <Capbility value="0x15" decibel="-16" />
+        <Capbility value="0x16" decibel="-15" />
+        <Capbility value="0x17" decibel="-14" />
+        <Capbility value="0x18" decibel="-13" />
+        <Capbility value="0x19" decibel="-12" />
+        <Capbility value="0x1A" decibel="-11" />
+        <Capbility value="0x1B" decibel="-10" />
+        <Capbility value="0x1C" decibel="-9" />
+        <Capbility value="0x1D" decibel="-8" />
+        <Capbility value="0x1E" decibel="-7" />
+        <Capbility value="0x1F" decibel="-6" />
+        <Capbility value="0x20" decibel="-5" />
+        <Capbility value="0x21" decibel="-4" />
+        <Capbility value="0x22" decibel="-3" />
+        <Capbility value="0x23" decibel="-2" />
+        <Capbility value="0x24" decibel="-1" />
+        <Capbility value="0x25" decibel="0" />
+        <Capbility value="0x26" decibel="1" />
+        <Capbility value="0x27" decibel="2" />
+        <Capbility value="0x28" decibel="3" />
+        <Capbility value="0x29" decibel="4" />
+        <Capbility value="0x2A" decibel="5" />
+        <Capbility value="0x2B" decibel="6" />
+        <Capbility value="0x2C" decibel="7" />
+        <Capbility value="0x2D" decibel="8" />
+        <Capbility value="0x2E" decibel="9" />
+        <Capbility value="0x2F" decibel="10" />
+        <Capbility value="0x30" decibel="11" />
+        <Capbility value="0x31" decibel="12" />
+      </Bits>
+    </RegisterInfo>
+  </Component>
+  <Component identifier="BT">
+    <HCIInfo name="XXX" ocf="0x01" ogf="0x02" length="3">
+      <Param>indicate ...</Param>
+      <Param>indicate ...</Param>
+      <Param>indicate ...</Param>
+    </HCIInfo>
+  </Component>
+  <Component identifier="GPIO_PORT">
+    <GPIOInfo>
+      <GPIO name="GPIO1" port="1" desc="control 1" />
+      <GPIO name="GPIO2" port="2" desc="control 2" />
+    </GPIOInfo>
+  </Component>
+  <Component identifier="PMIC">
+    <RegisterInfo index="0x48" name="Class D Register 1">
+      <Bits range="7:4" field="PDM_DDLY" default="0000" desc="This field introduces a programalbe delay in 1ns increments on the PDM_SDA data line before it is sampled internally by the selected PDM_CLK edge" />
+      <Bits range="3" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="2" field="PONZA_LR_POL" default="0" desc="This field selects the sampling edge of the PDM_CLK used by the 88PM822 to sample the PDM_SDA stream." />
+      <Bits range="1" field="CLASSD_DIG_EN" default="0" desc="Update me." />
+      <Bits range="0" field="CLASSD_OC" default="0" desc="This field latches any over current event flagged by the class D amplifier, provided the CLASSD_EN field is set." />
+    </RegisterInfo>
+    <RegisterInfo index="0x61" name="Class D Speaker Driver Register 1">
+      <Bits range="7:6" field="RSVD" default="11" desc="Reserved" />
+      <Bits range="5:4" field="PWM_MODE" default="00" desc="PWM mode" />
+      <Bits range="3:2" field="DIG_GAIN" default="11" type="Gain" desc="Digital gain.">
+        <Capbility value="0x00" decibel="0" />
+        <Capbility value="0x01" decibel="0" />
+        <Capbility value="0x02" decibel="3.52" />
+        <Capbility value="0x03" decibel="6" />
+      </Bits>
+      <Bits range="1" field="SSC_EN" default="1" desc="Spr. Spec. control 1-enable 0-disable." />
+      <Bits range="0" field="RFU_MUTE" default="0" desc="This field have two choice play path and mute path." />
+    </RegisterInfo>
+    <RegisterInfo index="0x62" name="Class D Speaker Driver Register 2">
+      <Bits range="7" field="RSVD" default="0" desc="Reserved" />
+      <Bits range="6:5" field="ANA_GAIN" default="01" type="Gain" desc="Analog gain">
+        <Capbility value="0x00" decibel="-3" />
+        <Capbility value="0x01" decibel="0" />
+        <Capbility value="0x02" decibel="3" />
+        <Capbility value="0x03" decibel="6" />
+      </Bits>
+      <Bits range="4:2" field="AGC_RLS_TIME" default="100" desc="rls time." />
+      <Bits range="1" field="AGC_MSK_TIME" default="0" desc="msk time. default 20us" />
+      <Bits range="0" field="AGC_EN" default="0" desc="This field decide whether enable Automatic Gain Calibration." />
+    </RegisterInfo>
+  </Component>
+</MarvellAudioBasicElements>

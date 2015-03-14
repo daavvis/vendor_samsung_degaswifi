@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PowerPolicyDaemonTaskMonitor>
+  <benchmark>
+    <!--gc benchmark-->
+    <keyword>bench</keyword>
+    <keyword>fps2d</keyword>
+    <keyword>performance</keyword>
+    <keyword>rightware</keyword>
+    <keyword>quadrant</keyword>
+    <keyword>mm06</keyword>
+    <keyword>mm07</keyword>
+    <keyword>neocore</keyword>
+    <keyword>GearsES</keyword>
+    <keyword>hackathon</keyword>
+    <keyword>linpack</keyword>
+    <keyword>antutu</keyword>
+    <keyword>samurai</keyword>
+    <keyword>cargo</keyword>
+    <keyword>fruitninja</keyword>
+    <keyword>nenamark</keyword>
+    <keyword>quicinc</keyword>
+    <!--system benchmark-->
+    <keyword>cfbench</keyword>
+    <keyword>coremark</keyword>
+    <keyword>android.cm3</keyword>
+    <keyword>droidbench</keyword>
+    <keyword>glbenchmark</keyword>
+    <!--browser benchmark-->
+    <keyword>vellamo</keyword>
+    <!--cmcc benchmark-->
+    <keyword>thunderst</keyword>
+    <keyword>touchexplorer</keyword>
+  </benchmark>
+  <game>
+    <keyword>angrybirds</keyword>
+    <keyword>krazyracers</keyword>
+  </game>
+  <game2>
+    <keyword>templerun</keyword>
+  </game2>
+  <game3>
+    <keyword>castlemaster</keyword>
+  </game3>
+</PowerPolicyDaemonTaskMonitor>

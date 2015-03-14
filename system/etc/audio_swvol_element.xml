@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- BOARD_VOLUME_CALIBRATION -->
+<MarvellSWVolCalibrationCoef>
+    <Version>1.2</Version>
+    <StreamList>
+        <Stream name="AUDIO_STREAM_DEFAULT"          value="-1"  step="15"/>
+        <Stream name="AUDIO_STREAM_VOICE_CALL"       value="0"   step="5"/>
+        <Stream name="AUDIO_STREAM_SYSTEM"           value="1"   step="7"/>
+        <Stream name="AUDIO_STREAM_RING"             value="2"   step="7"/>
+        <Stream name="AUDIO_STREAM_MUSIC"            value="3"   step="15"/>
+        <Stream name="AUDIO_STREAM_ALARM"            value="4"   step="7"/>
+        <Stream name="AUDIO_STREAM_NOTIFICATION"     value="5"   step="7"/>
+        <Stream name="AUDIO_STREAM_BLUETOOTH_SCO"    value="6"   step="15"/>
+        <Stream name="AUDIO_STREAM_ENFORCED_AUDIBLE" value="7"   step="7"/>
+        <Stream name="AUDIO_STREAM_DTMF"             value="8"   step="15"/>
+        <Stream name="AUDIO_STREAM_TTS"              value="9"   step="15"/>
+        <Stream name="AUDIO_STREAM_FM"               value="10"  step="15"/>
+        <Stream name="AUDIO_STREAM_VOICERECORDING"   value="11"  step="15"/>
+        <Stream name="AUDIO_STREAM_VIDEORECORDING"   value="12"  step="15"/>
+        <!--voip stream is extended to distinguish with voice call,
+             only visable by calibrator and hiden to audio framework -->
+        <Stream name="AUDIO_STREAM_EXT_VOIP_WB"      value="1000" step="5"/>
+        <Stream name="AUDIO_STREAM_EXT_VOIP_NB"      value="1001" step="5"/>
+        <!--vt stream is extended to distinguish with voice call,
+             only visable by calibrator and hiden to audio framework -->
+        <Stream name="AUDIO_STREAM_EXT_VT_WB"        value="1002" step="5"/>
+        <Stream name="AUDIO_STREAM_EXT_VT_NB"        value="1003" step="5"/>
+    </StreamList>
+
+    <DeviceList>
+        <!--output devices-->
+        <Device name="AUDIO_DEVICE_OUT_EARPIECE"                  value="0x1" />
+        <Device name="AUDIO_DEVICE_OUT_SPEAKER"                   value="0x2" />
+        <Device name="AUDIO_DEVICE_OUT_WIRED_HEADSET"             value="0x4" />
+        <Device name="AUDIO_DEVICE_OUT_WIRED_HEADPHONE"           value="0x8" />
+        <Device name="AUDIO_DEVICE_OUT_BLUETOOTH_SCO"             value="0x10" />
+        <Device name="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET"     value="0x20" />
+        <Device name="AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT"      value="0x40" />
+        <Device name="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP"            value="0x80" />
+        <Device name="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_HEADPHONES" value="0x100" />
+        <Device name="AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_SPEAKER"    value="0x200" />
+        <Device name="AUDIO_DEVICE_OUT_AUX_DIGITAL"               value="0x400" />
+        <Device name="AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET"         value="0x800" />
+        <Device name="AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET"         value="0x1000" />
+        <Device name="AUDIO_DEVICE_OUT_USB_ACCESSORY"             value="0x2000" />
+        <Device name="AUDIO_DEVICE_OUT_USB_DEVICE"                value="0x4000" />
+        <Device name="AUDIO_DEVICE_OUT_REMOTE_SUBMIX"             value="0x8000" />
+        <Device name="AUDIO_DEVICE_OUT_FM_HEADPHONE"              value="0x10000" />
+        <Device name="AUDIO_DEVICE_OUT_FM_SPEAKER"                value="0x20000" />
+        <Device name="AUDIO_DEVICE_OUT_FM_TRANSMITTER"            value="0x40000" />
+        <Device name="AUDIO_DEVICE_OUT_DEFAULT"                   value="0x40000000" />
+        <!--Device name="AUDIO_DEVICE_OUT_ALL" -->
+
+        <!--input devices-->
+        <Device name="AUDIO_DEVICE_IN_COMMUNICATION"              value="0x80000001" />
+        <Device name="AUDIO_DEVICE_IN_AMBIENT"                    value="0x80000002" />
+        <Device name="AUDIO_DEVICE_IN_BUILTIN_MIC"                value="0x80000004" />
+        <Device name="AUDIO_DEVICE_IN_BLUETOOTH_SCO_HEADSET"      value="0x80000008" />
+        <Device name="AUDIO_DEVICE_IN_WIRED_HEADSET"              value="0x80000010" />
+        <Device name="AUDIO_DEVICE_IN_AUX_DIGITAL"                value="0x80000020" />
+        <Device name="AUDIO_DEVICE_IN_VOICE_CALL"                 value="0x80000040" />
+        <Device name="AUDIO_DEVICE_IN_BACK_MIC"                   value="0x80000080" />
+        <Device name="AUDIO_DEVICE_IN_REMOTE_SUBMIX"              value="0x80000100" />
+        <Device name="AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET"          value="0x80000200" />
+        <Device name="AUDIO_DEVICE_IN_DGTL_DOCK_HEADSET"          value="0x80000400" />
+        <Device name="AUDIO_DEVICE_IN_USB_ACCESSORY"              value="0x80000800" />
+        <Device name="AUDIO_DEVICE_IN_USB_DEVICE"                 value="0x80001000" />
+        <Device name="AUDIO_DEVICE_IN_VT_MIC"                     value="0x80002000" />
+        <Device name="AUDIO_DEVICE_IN_FMRADIO"                    value="0x80004000" />
+        <Device name="AUDIO_DEVICE_IN_DEFAULT"                    value="0xc0000000" />
+        <!--Device name="DEVICE_IN_ALL"-->
+    </DeviceList>
+
+    <FormatList>
+        <Format name=".DEFAULT"   value="-1" />
+        <Format name=".mp3"       value="0"  />
+        <Format name=".aac"       value="1"  />
+        <Format name=".ogg"       value="2"  />
+        <Format name=".mp4"       value="3"  />
+        <Format name=".avi"       value="4"  />
+        <Format name=".mid"       value="5"  />
+        <Format name=".amr"       value="6"  />
+        <Format name=".wav"       value="7"  />
+        <Format name=".rmvb"      value="8"  />
+        <Format name=".pcm"       value="9"  />
+        <Format name=".amr_nb"    value="10" />
+        <Format name=".tone"      value="11" />
+        <Format name=".3gpp"      value="12" />
+    </FormatList>
+
+
+    <!-- for recording vulume calibration -->
+    <AppStyleList>
+        <AppStyle name="AUDIO_APP_DEFAULT"        value="0" />
+        <AppStyle name="AUDIO_APP_VOICE_RECORDER" value="1" />
+        <AppStyle name="AUDIO_APP_CAMCORDER"      value="2" />
+        <AppStyle name="AUDIO_APP_ASR"            value="3" />
+        <AppStyle name="AUDIO_APP_VOIP_WB_RECORDER"  value="4" />
+        <AppStyle name="AUDIO_APP_VOIP_NB_RECORDER"  value="5" />
+        <AppStyle name="AUDIO_APP_VT_WB_RECORDER"  value="6" />
+        <AppStyle name="AUDIO_APP_VT_NB_RECORDER"  value="7" />
+    </AppStyleList>
+
+    <EncoderList>
+        <Encoder name="AUDIO_ENCODER_DEFAULT"       value="0" />
+        <Encoder name="AUDIO_ENCODER_AMR_NB"        value="1" />
+        <Encoder name="AUDIO_ENCODER_AMR_WB"        value="2" />
+        <Encoder name="AUDIO_ENCODER_AAC"           value="3" />
+        <Encoder name="AUDIO_ENCODER_AAC_PLUS"      value="4" />
+        <Encoder name="AUDIO_ENCODER_EAAC_PLUS"     value="5" />
+    </EncoderList>
+
+</MarvellSWVolCalibrationCoef>
+

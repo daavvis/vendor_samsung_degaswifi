@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MarvellSensorConfiguration>
+  <SensorSet identifier="default">
+    <Sensor identifier="Pressure">
+      <lib name="libsensors.st.pressure.so"/>
+      <name value="ST Pressure sensor"/>
+      <vendor value="STMicroelectronics"/>
+      <version value="1"/>
+      <!-- handle is identical with type -->
+      <handle value="SENSOR_TYPE_PRESSURE"/>
+      <type value="SENSOR_TYPE_PRESSURE"/>
+      <maxRange value="5000"/>
+      <resolution value="10"/>
+      <power value="60"/>
+      <minDelay value="10"/>
+    </Sensor>
+    <Sensor identifier="Temperature">
+      <lib name="libsensors.st.pressure.so"/>
+      <name value="ST Temperature sensor"/>
+      <vendor value="STMicroelectronics"/>
+      <version value="1"/>
+      <!-- handle is identical with type -->
+      <handle value="SENSOR_TYPE_AMBIENT_TEMPERATURE"/>
+      <type value="SENSOR_TYPE_AMBIENT_TEMPERATURE"/>
+      <maxRange value="5000"/>
+      <resolution value="10"/>
+      <power value="60"/>
+      <minDelay value="10"/>
+    </Sensor>
+    <Sensor identifier="Light">
+      <lib name="libsensors.in.light.so"/>
+      <name value="Intersil Light sensor"/>
+      <vendor value="Intersil"/>
+      <version value="1"/>
+      <!-- handle is identical with type -->
+      <handle value="SENSOR_TYPE_LIGHT"/>
+      <type value="SENSOR_TYPE_LIGHT"/>
+      <maxRange value="0"/>
+      <resolution value="0"/>
+      <power value="0"/>
+      <minDelay value="200"/>
+    </Sensor>
+    <Sensor identifier="Proximity">
+      <lib name="libsensors.in.proximity.so"/>
+      <name value="Intersil Proximity sensor"/>
+      <vendor value="Intersil"/>
+      <version value="1"/>
+      <!-- handle is identical with type -->
+      <handle value="SENSOR_TYPE_PROXIMITY"/>
+      <type value="SENSOR_TYPE_PROXIMITY"/>
+      <maxRange value="0"/>
+      <resolution value="0"/>
+      <power value="0"/>
+      <minDelay value="200"/>
+    </Sensor>
+  </SensorSet>
+</MarvellSensorConfiguration>
